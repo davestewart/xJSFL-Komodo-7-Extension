@@ -1,4 +1,7 @@
 
+xjsfl.init(this);
+
+/*
 // instantiate a new person
 	var person = new Person('Dave', 36);
 
@@ -7,3 +10,6 @@
 
 // print the new person
 	Output.print(person);
+*/
+
+fl.

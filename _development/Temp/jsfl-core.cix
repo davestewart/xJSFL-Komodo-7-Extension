@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<codeintel version="2.0">
+	<file lang="JSFL" doc="JSFL API core objects" path="JSFL Core">
+		<scope doc="" ilk="blob" lang="JSFL" name="*">
+			<!--
+
+				Global
+
+			-->
+			<scope name="setInterval" doc="Set a delay for a specific function. The interval ID is used&#xA;to refer to the specific interval when it needs to be&#xA;cleared." ilk="function" signature="setInterval(funcName, delay) =&gt; ID">
+				<variable name="funcName" doc="is the name of the function for which you want to set a delay" ilk="argument" />
+				<variable name="delay" doc="is the number of milliseconds (thousandths of a second) that the function should be delayed" ilk="argument" />
+			</scope>
+			<scope name="setTimeout" doc="Executes a code snippet or a function after specified delay.&#xA;; timeoutID = window.setTimeout(code, delay); You can cancel&#xA;the timeout using window.clearTimeout()." ilk="function" signature="setTimeout(func, delay[, param1, param2, ...]) =&gt; timeoutID" />
+			<scope name="clearInterval" doc="Clears a delay that&apos;s been set for a specific function. DOM&#xA;Level 0." ilk="function" signature="clearInterval(intervalID)">
+				<variable name="intervalID" doc="is the ID of the specific interval you want to clear, which is the return value of a call to the setInterval method" ilk="argument" />
+			</scope>
+			<scope name="clearTimeout" doc="Clears the delay set by window.setTimeout(). Passing an&#xA;invalid ID to clearTimeout does not have any effect (and&#xA;doesn&apos;t throw an exception)." ilk="function" signature="clearTimeout(timeoutID)" />
+
+			<variable name="Infinity"/>
+			<variable name="NaN"/>
+			<variable name="undefined"/>
+
+			<scope name="eval" doc="Evaluate the supplied string as JavaScript code." ilk="function" signature="eval(str)">
+				<variable name="str" citdl="String" ilk="argument"/>
+			</scope>
+			<scope name="isFinite" doc="Returns false if the supplied number is NaN, Infinity or -Infinity; returns true otherwise." ilk="function" returns="Boolean" signature="isFinite(num) -&gt; Boolean">
+				<variable name="num" citdl="Number" ilk="argument"/>
+			</scope>
+			<scope name="isNaN" doc="Returns true if the supplied number is NaN, false otherwise." ilk="function" returns="Boolean" signature="isNaN(num) -&gt; Boolean">
+				<variable name="num" citdl="Number" ilk="argument"/>
+			</scope>
+			<scope name="parseFloat" doc="Attempt to convert a string into a number." ilk="function" returns="Number" signature="parseFloat(string) -&gt; Number">
+				<variable name="string" citdl="String" ilk="argument"/>
+			</scope>
+			<scope name="parseInt" doc="Attempt to convert a string into an integer number, using the specified base." ilk="function" returns="Number" signature="parseInt(string, radix) -&gt; Number">
+				<variable name="string" citdl="String" ilk="argument"/>
+				<variable name="radix" citdl="Number" ilk="argument"/>
+			</scope>
+			<!--
+
+				Object
+
+			-->
+			<scope name="Object" ilk="class">
+				<variable name="constructor"/>
+				<variable name="prototype"/>
+				<scope name="hasOwnProperty" doc="Determines if the object/instance itself has the named property or method." ilk="function" returns="Boolean" signature="hasOwnProperty(propertyOrMethodName) -&gt; Boolean">
+					<variable name="propertyOrMethodName" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="isPrototypeOf" doc="Determines if the calling object prototype is in the inheritance chain for the supplied argument." ilk="function" returns="Boolean" signature="isPrototypeOf(instanceToTest) -&gt; Boolean">
+					<variable name="instanceToTest" citdl="Object" ilk="argument"/>
+				</scope>
+				<scope name="propertyIsEnumerable" doc="Determines if the object/instance itself has a property or method of the supplied name which will appear in a for (prop in obj) enumeration." ilk="function" returns="Boolean" signature="propertyIsEnumerable(propertyOrMethodName) -&gt; Boolean">
+					<variable name="propertyOrMethodName" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="toLocaleString" doc="For most objects, the same as toString() unless explicitly overridden." ilk="function" returns="String" signature="toLocaleString() -&gt; String"/>
+				<scope name="toString" doc="Returns a string representation of the object." ilk="function" returns="String" signature="toString() -&gt; String"/>
+				<scope name="valueOf" doc="Returns the internal this value of the object." ilk="function" returns="String" signature="valueOf() -&gt; String"/>
+			</scope>
+			<!--
+
+				Array
+
+			-->
+			<scope name="Array" classrefs="Object" ilk="class">
+				<variable name="length"/>
+				<scope name="concat" doc="Concatenates one or more items or arrays onto the current array." ilk="function" returns="Array" signature="concat(item1, item2, ...) -&gt; Array">
+					<variable name="item1" citdl="Object" ilk="argument"/>
+					<variable name="item2" citdl="Object" ilk="argument"/>
+				</scope>
+				<scope name="join" doc="Returns a string representation of the array, separated by the delimiter of your choice." ilk="function" returns="String" signature="join(separator) -&gt; String">
+					<variable name="separator" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="pop" doc="Remove the last element from the array and return it." ilk="function" returns="Object" signature="pop() -&gt; Object"/>
+				<scope name="push" doc="Adds one or more elements to the end of the array, returning the new length." ilk="function" returns="Number" signature="push(item1, item2, ...) -&gt; Number">
+					<variable name="item1" citdl="Object" ilk="argument"/>
+					<variable name="item2" citdl="Object" ilk="argument"/>
+				</scope>
+				<scope name="reverse" doc="Reverses the order of the elements in the array, and returns the array." ilk="function" returns="Array" signature="reverse() -&gt; Array"/>
+				<scope name="shift" doc="Removes the first element of the array and returns it." ilk="function" returns="Object" signature="shift() -&gt; Object"/>
+				<scope name="slice" doc="Return a specified section of an array." ilk="function" returns="Array" signature="slice(start, end) -&gt; Array">
+					<variable name="start" citdl="Number" ilk="argument"/>
+					<variable name="end" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="sort" doc="Sort the array." ilk="function" returns="Array" signature="sort(compareFunction) -&gt; Array">
+					<variable name="compareFunction" citdl="Function" ilk="argument"/>
+				</scope>
+				<scope name="splice" doc="Remove a section from the array and return it; optionally inserting new values in that place." ilk="function" returns="Array" signature="splice(start, deleteCount, newItem1, newItem2, ...) -&gt; Array">
+					<variable name="start" citdl="Number" ilk="argument"/>
+					<variable name="deleteCount" citdl="Number" ilk="argument"/>
+					<variable name="newItem1" citdl="Object" ilk="argument"/>
+					<variable name="newItem2" citdl="Object" ilk="argument"/>
+				</scope>
+				<scope name="unshift" doc="Insert items to the front of an array, and return the new length." ilk="function" returns="Number" signature="unshift(newItem1, newItem2, ...) -&gt; Number">
+					<variable name="newItem1" citdl="Object" ilk="argument"/>
+					<variable name="newItem2" citdl="Object" ilk="argument"/>
+				</scope>
+			</scope>
+			<scope name="Boolean" classrefs="Object" ilk="class"/>
+			<!--
+
+				Date
+
+			-->
+			<scope name="Date" classrefs="Object" ilk="class">
+				<scope name="UTC" doc="Return the number of milliseconds corresponding to the supplied arguments." ilk="function" returns="Number" signature="UTC(year, month, day, hour, minute, second, ms) -&gt; Number">
+					<variable name="year" citdl="Number" ilk="argument"/>
+					<variable name="month" citdl="Number" ilk="argument"/>
+					<variable name="day" citdl="Number" ilk="argument"/>
+					<variable name="hour" citdl="Number" ilk="argument"/>
+					<variable name="minute" citdl="Number" ilk="argument"/>
+					<variable name="second" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="getDate" doc="Return the day number in the local timezone." ilk="function" returns="Number" signature="getDate() -&gt; Number"/>
+				<scope name="getDay" doc="Return the zero-based weekday number in the local timezone." ilk="function" returns="Number" signature="getDay() -&gt; Number"/>
+				<scope name="getFullYear" doc="Return the four-digit year in the local timezone." ilk="function" returns="Number" signature="getFullYear() -&gt; Number"/>
+				<scope name="getHours" doc="Return the hour number in the local timezone." ilk="function" returns="Number" signature="getHours() -&gt; Number"/>
+				<scope name="getMilliseconds" doc="Return the millisecond number in the local timezone." ilk="function" returns="Number" signature="getMilliseconds() -&gt; Number"/>
+				<scope name="getMinutes" doc="Return the minute number in the local timezone." ilk="function" returns="Number" signature="getMinutes() -&gt; Number"/>
+				<scope name="getMonth" doc="Return the zero-based month number in the local timezone." ilk="function" returns="Number" signature="getMonth() -&gt; Number"/>
+				<scope name="getSeconds" doc="Return the second number in the local timezone." ilk="function" returns="Number" signature="getSeconds() -&gt; Number"/>
+				<scope name="getTime" doc="Return the number of milliseconds since Midnight, Jan 1, 1970 UTC." ilk="function" returns="Number" signature="getTime() -&gt; Number"/>
+				<scope name="getTimezoneOffset" doc="Returns the difference between the local time and UTC time in minutes." ilk="function" returns="Number" signature="getTimezoneOffset() -&gt; Number"/>
+				<scope name="getUTCDate" doc="Return the day number in UTC." ilk="function" returns="Number" signature="getUTCDate() -&gt; Number"/>
+				<scope name="getUTCDay" doc="Return the zero-based weekday number in UTC." ilk="function" returns="Number" signature="getUTCDay() -&gt; Number"/>
+				<scope name="getUTCFullYear" doc="Return the four-digit year in UTC." ilk="function" returns="Number" signature="getUTCFullYear() -&gt; Number"/>
+				<scope name="getUTCHours" doc="Return the hour number in UTC." ilk="function" returns="Number" signature="getUTCHours() -&gt; Number"/>
+				<scope name="getUTCMilliseconds" doc="Return the millisecond number in UTC." ilk="function" returns="Number" signature="getUTCMilliseconds() -&gt; Number"/>
+				<scope name="getUTCMinutes" doc="Return the minute number in UTC." ilk="function" returns="Number" signature="getUTCMinutes() -&gt; Number"/>
+				<scope name="getUTCMonth" doc="Return the zero-based month number in UTC." ilk="function" returns="Number" signature="getUTCMonth() -&gt; Number"/>
+				<scope name="getUTCSeconds" doc="Return the second number in UTC." ilk="function" returns="Number" signature="getUTCSeconds() -&gt; Number"/>
+				<scope name="parse" doc="Attempt to parse the supplied string as a date, and return the number of milliseconds it represents." ilk="function" returns="Number" signature="parse(dateString) -&gt; Number">
+					<variable name="dateString" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="setDate" doc="Set the day number in the local timezone." ilk="function" returns="Number" signature="setDate(day) -&gt; Number">
+					<variable name="day" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setFullYear" doc="Set the year, expressed in the local timezone." ilk="function" returns="Number" signature="setFullYear(year, month, day) -&gt; Number">
+					<variable name="year" citdl="Number" ilk="argument"/>
+					<variable name="month" citdl="Number" ilk="argument"/>
+					<variable name="day" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setHours" doc="Set the hour number in the local timezone." ilk="function" returns="Number" signature="setHours(hours, mins, secs, ms) -&gt; Number">
+					<variable name="hours" citdl="Number" ilk="argument"/>
+					<variable name="mins" citdl="Number" ilk="argument"/>
+					<variable name="secs" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setMilliseconds" doc="Set the millisecond number in the local timezone." ilk="function" returns="Number" signature="setMilliseconds(ms) -&gt; Number">
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setMinutes" doc="Set the minute number in the local timezone." ilk="function" returns="Number" signature="setMinutes(mins, secs, ms) -&gt; Number">
+					<variable name="mins" citdl="Number" ilk="argument"/>
+					<variable name="secs" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setMonth" doc="Set the zero-based month, expressed in the local timezone." ilk="function" returns="Number" signature="setMonth(month, day) -&gt; Number">
+					<variable name="month" citdl="Number" ilk="argument"/>
+					<variable name="day" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setSeconds" doc="Set the second number in the local timezone." ilk="function" returns="Number" signature="setSeconds(second, ms) -&gt; Number">
+					<variable name="second" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setTime" doc="Set the date object to a new time." ilk="function" returns="Number" signature="setTime(time) -&gt; Number">
+					<variable name="time" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCDate" doc="Set the UTC day number." ilk="function" returns="Number" signature="setUTCDate(day) -&gt; Number">
+					<variable name="day" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCFullYear" doc="Set the UTC year number." ilk="function" returns="Number" signature="setUTCFullYear(year, month, day) -&gt; Number">
+					<variable name="year" citdl="Number" ilk="argument"/>
+					<variable name="month" citdl="Number" ilk="argument"/>
+					<variable name="day" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCHours" doc="Set the UTC hours." ilk="function" returns="Number" signature="setUTCHours(hours, mins, secs, ms) -&gt; Number">
+					<variable name="hours" citdl="Number" ilk="argument"/>
+					<variable name="mins" citdl="Number" ilk="argument"/>
+					<variable name="secs" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCMilliseconds" doc="Set the UTC milliseconds." ilk="function" returns="Number" signature="setUTCMilliseconds(ms) -&gt; Number">
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCMinutes" doc="Set the UTC minutes." ilk="function" returns="Number" signature="setUTCMinutes(mins, secs, ms) -&gt; Number">
+					<variable name="mins" citdl="Number" ilk="argument"/>
+					<variable name="secs" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCMonth" doc="Set the UTC month." ilk="function" returns="Number" signature="setUTCMonth(month, day) -&gt; Number">
+					<variable name="month" citdl="Number" ilk="argument"/>
+					<variable name="day" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="setUTCSeconds" doc="Set the UTC seconds." ilk="function" returns="Number" signature="setUTCSeconds(secs, ms) -&gt; Number">
+					<variable name="secs" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="toDateString" doc="Return a string version of the date-only portion of the object." ilk="function" returns="String" signature="toDateString() -&gt; String"/>
+				<scope name="toTimeString" doc="Return a string version of the time-only portion of the object." ilk="function" returns="String" signature="toTimeString() -&gt; String"/>
+				<scope name="toUTCString" doc="Returns a string form of the Date in a convenient, human-readable form in UTC." ilk="function" returns="String" signature="toUTCString() -&gt; String"/>
+				<scope name="parse" doc="Attempt to parse the supplied string as a date, and return the number of milliseconds it represents." ilk="function" returns="Number" signature="parse(dateString) -&gt; Number">
+					<variable name="dateString" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="UTC" doc="Return the number of milliseconds corresponding to the supplied arguments." ilk="function" returns="Number" signature="UTC(year, month, day, hour, minute, second, ms) -&gt; Number">
+					<variable name="year" citdl="Number" ilk="argument"/>
+					<variable name="month" citdl="Number" ilk="argument"/>
+					<variable name="day" citdl="Number" ilk="argument"/>
+					<variable name="hour" citdl="Number" ilk="argument"/>
+					<variable name="minute" citdl="Number" ilk="argument"/>
+					<variable name="second" citdl="Number" ilk="argument"/>
+					<variable name="ms" citdl="Number" ilk="argument"/>
+				</scope>
+			</scope>
+			<scope name="Error" classrefs="Object" ilk="class"/>
+			<!--
+
+				Function
+
+			-->
+			<scope name="Function" classrefs="Object" ilk="class">
+				<variable name="arguments"/>
+				<variable name="length"/>
+				<scope name="apply" doc="Call the function/method, optionally setting a new scope for this and passing in parameters via an array." ilk="function" returns="Object" signature="apply(thisScope, args) -&gt; Object">
+					<variable name="thisScope" citdl="Object" ilk="argument"/>
+					<variable name="args" citdl="Array" ilk="argument"/>
+				</scope>
+				<scope name="call" doc="Call the function/method, optionally setting a new scope for this and passing in parameters." ilk="function" returns="Object" signature="call(thisScope, arg1, arg2, ...) -&gt; Object">
+					<variable name="thisScope" citdl="Object" ilk="argument"/>
+					<variable name="arg1" citdl="Object" ilk="argument"/>
+					<variable name="arg2" citdl="Object" ilk="argument"/>
+				</scope>
+			</scope>
+			<!--
+
+				Math
+
+			-->
+			<scope name="Math" classrefs="Object" ilk="class">
+				<scope name="abs" doc="Return the absolute value of x." ilk="function" returns="Number" signature="abs(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="acos" doc="Return the arc cosine of x, in radians." ilk="function" returns="Number" signature="acos(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="atan" doc="Return the arc tangent of x, in radians." ilk="function" returns="Number" signature="atan(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="atan" doc="Return the arc tangent of x, in radians." ilk="function" returns="Number" signature="atan(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="ceil" doc="Return smallest integer which is larger than x (aka &quot;round up&quot;)." ilk="function" returns="Number" signature="ceil(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="cos" doc="Return the cosine of x, in radians." ilk="function" returns="Number" signature="cos(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="exp" doc="Return the value of &#10;			e&#10;			x." ilk="function" returns="Number" signature="exp(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="floor" doc="Return largest integer which is less than x (aka &quot;round down&quot;)." ilk="function" returns="Number" signature="floor(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="log" doc="Return the natural logarithm of x." ilk="function" returns="Number" signature="log(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="max" doc="Return the largest of all arguments supplied." ilk="function" returns="Number" signature="max(value1, value2, ...) -&gt; Number">
+					<variable name="value1" citdl="Number" ilk="argument"/>
+					<variable name="value2" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="min" doc="Return the smallest of all arguments supplied." ilk="function" returns="Number" signature="min(value1, value2, ...) -&gt; Number">
+					<variable name="value1" citdl="Number" ilk="argument"/>
+					<variable name="value2" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="pow" doc="Return the value of raising x to the power y." ilk="function" returns="Number" signature="pow(x, y) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+					<variable name="y" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="random" doc="Return a floating-point random number between 0 (inclusive) and 1 (exclusive)." ilk="function" returns="Number" signature="random() -&gt; Number"/>
+				<scope name="round" doc="Round a number to the closest integer." ilk="function" returns="Number" signature="round(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="sin" doc="Return the sine of x, in radians." ilk="function" returns="Number" signature="sin(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="sqrt" doc="Return the square root of x." ilk="function" returns="Number" signature="sqrt(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="tan" doc="Return the tangent of x, in radians." ilk="function" returns="Number" signature="tan(x) -&gt; Number">
+					<variable name="x" citdl="Number" ilk="argument"/>
+				</scope>
+			</scope>
+			<!--
+
+				Number
+
+			-->
+			<scope name="Number" classrefs="Object" ilk="class">
+				<scope name="toExponential" doc="Return the number formatted in scientific notation, with one digit before the decimal point and a specified number of digits after." ilk="function" returns="String" signature="toExponential(fractionDigits) -&gt; String">
+					<variable name="fractionDigits" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="toFixed" doc="Return the number formatted with a specified number of digits after the decimal point." ilk="function" returns="String" signature="toFixed(fractionDigits) -&gt; String">
+					<variable name="fractionDigits" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="toPrecision" doc="Return the number as a string in either in fixed or exponential notation, with the specified number of digits." ilk="function" returns="String" signature="toPrecision(precision) -&gt; String">
+					<variable name="precision" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="toString" doc="Return the number as a string converted to a specified base." ilk="function" returns="String" signature="toString(radix) -&gt; String">
+					<variable name="radix" citdl="Number" ilk="argument"/>
+				</scope>
+			</scope>
+			<!--
+
+				RegExp
+
+			-->
+			<scope name="RegExp" classrefs="Object" ilk="class">
+				<variable name="global"/>
+				<variable name="ignoreCase"/>
+				<variable name="lastIndex"/>
+				<variable name="multiline"/>
+				<variable name="source"/>
+				<scope name="exec" doc="Run the regular expression against a string and return a single match." ilk="function" returns="Array" signature="exec(sourceString) -&gt; Array">
+					<variable name="sourceString" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="test" doc="Run the regular expression against a string; return true if a match exists, false otherwise." ilk="function" returns="Boolean" signature="test(sourceString) -&gt; Boolean">
+					<variable name="sourceString" citdl="String" ilk="argument"/>
+				</scope>
+			</scope>
+			<!--
+
+				String
+
+			-->
+			<scope name="String" classrefs="Object" ilk="class">
+				<variable name="length"/>
+				<scope name="charAt" doc="Return the character at a particular index in the string." ilk="function" returns="String" signature="charAt(pos) -&gt; String">
+					<variable name="pos" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="charCodeAt" doc="Return the Unicode value of the character at a particular index in the string." ilk="function" returns="Number" signature="charCodeAt(pos) -&gt; Number">
+					<variable name="pos" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="concat" doc="Append one or more strings to the current string, and return the result." ilk="function" returns="String" signature="concat(string1, string2, ...) -&gt; String">
+					<variable name="string1" citdl="String" ilk="argument"/>
+					<variable name="string2" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="fromCharCode" doc="Create a new string from a series of Unicode character values." ilk="function" returns="String" signature="fromCharCode(charCode0, charCode1, ...) -&gt; String">
+					<variable name="charCode0" citdl="Number" ilk="argument"/>
+					<variable name="charCode1" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="indexOf" doc="Find the offset of a substring within the string." ilk="function" returns="String" signature="indexOf(searchString, position) -&gt; String">
+					<variable name="searchString" citdl="String" ilk="argument"/>
+					<variable name="position" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="lastIndexOf" doc="The offset of a substring within the string." ilk="function" returns="String" signature="lastIndexOf(searchString, position) -&gt; String">
+					<variable name="searchString" citdl="String" ilk="argument"/>
+					<variable name="position" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="localeCompare" doc="Compare the string to the argument in the current locale." ilk="function" returns="Number" signature="localeCompare(compareString) -&gt; Number">
+					<variable name="compareString" citdl="String" ilk="argument"/>
+				</scope>
+				<scope name="match" doc="Run the supplied regular expression against the string and return an array of the results." ilk="function" returns="Array" signature="match(expr) -&gt; Array">
+					<variable name="expr" citdl="RegExp" ilk="argument"/>
+				</scope>
+				<scope name="replace" doc="Find and replace values in a string, and return the changed string." ilk="function" returns="String" signature="replace(searchExpr, replaceExpr) -&gt; String">
+					<variable name="searchExpr" citdl="Object" ilk="argument"/>
+					<variable name="replaceExpr" citdl="Object" ilk="argument"/>
+				</scope>
+				<scope name="search" doc="Find the offset of a regular expression within the string." ilk="function" returns="Number" signature="search(searchExpr) -&gt; Number">
+					<variable name="searchExpr" citdl="RegExp" ilk="argument"/>
+				</scope>
+				<scope name="slice" doc="Return a specified subsection of the string." ilk="function" returns="String" signature="slice(start, end) -&gt; String">
+					<variable name="start" citdl="Number" ilk="argument"/>
+					<variable name="end" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="split" doc="Separate the string into pieces and return an array of the resulting substrings." ilk="function" returns="Array" signature="split(separator, limit) -&gt; Array">
+					<variable name="separator" citdl="Object" ilk="argument"/>
+					<variable name="limit" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="substring" doc="Return a specified subsection of the string." ilk="function" returns="String" signature="substring(start, end) -&gt; String">
+					<variable name="start" citdl="Number" ilk="argument"/>
+					<variable name="end" citdl="Number" ilk="argument"/>
+				</scope>
+				<scope name="toLocaleLowerCase" doc="Return a locale-specific lowercase version of the string." ilk="function" returns="String" signature="toLocaleLowerCase() -&gt; String"/>
+				<scope name="toLocaleUpperCase" doc="Return a locale-specific uppercase version of the string." ilk="function" returns="String" signature="toLocaleUpperCase() -&gt; String"/>
+				<scope name="toLowerCase" doc="Return a lowercase version of the string." ilk="function" returns="String" signature="toLowerCase() -&gt; String"/>
+				<scope name="toUpperCase" doc="Return an uppercase version of the string." ilk="function" returns="String" signature="toUpperCase() -&gt; String"/>
+			</scope>
+		</scope>
+	</file>
+</codeintel>

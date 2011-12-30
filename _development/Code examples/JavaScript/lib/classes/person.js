@@ -5,7 +5,7 @@
  * @param	{Number}	age		The person's age
  * @returns	{Person}			A new Person object
  */
-function Person(name, age)
+Person = function(name, age)
 {
 	this.name	= name;
 	this.age	= age;
@@ -36,3 +36,7 @@ Person.prototype =
 		return 'Person: "' + this.name + '" (' +this.age+ ')';
 	}
 }
+
+var person = new Person();
+
+
