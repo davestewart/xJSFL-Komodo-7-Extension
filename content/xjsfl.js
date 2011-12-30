@@ -17,14 +17,16 @@ xjsfl =
 			add:function(handler)
 			{
 				this.remove(handler);
-				ko.views.manager.topView.addEventListener('keypress', handler, true);
+				var container = ko.views.manager ? ko.views.manager.topView : window;
+				container.addEventListener('keypress', handler, true);
 			},
 
 			remove:function(handler)
 			{
 				try
 				{
-					ko.views.manager.topView.removeEventListener('keypress', handler, true);
+					var container = ko.views.manager ? ko.views.manager.topView : window;
+					container.removeEventListener('keypress', handler, true);
 				}
 				catch(err)
 				{
@@ -38,6 +40,7 @@ xjsfl =
 					//commandOutput('> xJSFL: initialised');
 
 				// auto-size autocomplete box
+					//TODO Consider removing this as AutoCode has this functionality
 					window.addEventListener('current_view_changed', xjsfl.tools.resizeAutocomplete, false);
 
 				// set states
@@ -63,7 +66,7 @@ xjsfl =
 				{
 					// flag state
 						var state = false;
-
+						
 					// test
 						if(event.altKey && event.shiftKey && event.ctrlKey)
 						{
@@ -108,15 +111,15 @@ xjsfl =
 
 
 	// --------------------------------------------------------------------------------
-	// onLoad
+	// objects
 
 		objects:
 		{
-			get json(){	return		Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON) },
-			get prefs(){ return		Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs },
+			json:					Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON),
+			prefs:					Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs,
+			clipboard:				Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper),
 			get file(){	return		Components.classes["@activestate.com/koFileEx;1"].createInstance(Components.interfaces.koIFileEx) },
-			get localFile(){ return	Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile) },
-			clipboard:				Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper)
+			get localFile(){ return	Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile) }
 		},
 
 
@@ -617,3 +620,4 @@ xjsfl =
 }
 
 window.addEventListener("load", xjsfl.events.onLoad, false);
+xjsfl.events.onLoad();
