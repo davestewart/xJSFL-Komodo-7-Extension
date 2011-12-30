@@ -17,16 +17,14 @@ xjsfl =
 			add:function(handler)
 			{
 				this.remove(handler);
-				var container = ko.views.manager ? ko.views.manager.topView : window;
-				container.addEventListener('keypress', handler, true);
+				window.addEventListener('keypress', handler, true);
 			},
 
 			remove:function(handler)
 			{
 				try
 				{
-					var container = ko.views.manager ? ko.views.manager.topView : window;
-					container.removeEventListener('keypress', handler, true);
+					window.removeEventListener('keypress', handler, true);
 				}
 				catch(err)
 				{
@@ -37,11 +35,7 @@ xjsfl =
 			onLoad:function(event)
 			{
 				// debug
-					//commandOutput('> xJSFL: initialised');
-
-				// auto-size autocomplete box
-					//TODO Consider removing this as AutoCode has this functionality
-					window.addEventListener('current_view_changed', xjsfl.tools.resizeAutocomplete, false);
+					//trace('> xJSFL: onLoad');
 
 				// set states
 					xjsfl.shortcuts.states.file		= xjsfl.prefs.getBool('xjsflShortcutFile');
@@ -55,7 +49,7 @@ xjsfl =
 				// add listener if keyboard shortcuts are required
 					if(xjsfl.shortcuts.states.file || xjsfl.shortcuts.states.debug || xjsfl.shortcuts.states.project || xjsfl.shortcuts.states.library)
 					{
-						xjsfl.events.add(this.onKeyPress);
+						xjsfl.events.add(xjsfl.events.onKeyPress);
 					}
 			},
 
@@ -67,7 +61,7 @@ xjsfl =
 					// flag state
 						var state = false;
 						
-					// test
+					// run file on library items
 						if(event.altKey && event.shiftKey && event.ctrlKey)
 						{
 							if(xjsfl.shortcuts.states.library)
@@ -75,6 +69,8 @@ xjsfl =
 								state = xjsfl.shortcuts.runScriptOnSelectedLibraryItems();
 							}
 						}
+						
+					// run project
 						else if(event.shiftKey && event.ctrlKey)
 						{
 							if(xjsfl.shortcuts.states.project)
@@ -82,6 +78,8 @@ xjsfl =
 								state = xjsfl.shortcuts.runProject();
 							}
 						}
+						
+					// run file
 						else if(event.ctrlKey)
 						{
 							if(xjsfl.shortcuts.states.file)
@@ -89,6 +87,8 @@ xjsfl =
 								state = xjsfl.shortcuts.runFile();
 							}
 						}
+						
+					// debug file
 						else if(event.altKey)
 						{
 							if(xjsfl.shortcuts.states.debug)
@@ -177,19 +177,6 @@ xjsfl =
 				var document	= xjsfl.document.current;
 				var uri			= xjsfl.jsfl.getURI(document.file.URI);
 				xjsfl.objects.clipboard.copyString("'" + uri + "'");
-			},
-
-			/**
-			 * Sets the size of the code completion items box to 20
-			 */
-			resizeAutocomplete:function(event)
-			{
-				var view = event.originalTarget;
-				//var view = ko.views.manager.currentView;
-				if (view && view.scimoz)
-				{
-					view.scimoz.autoCMaxHeight = 20;
-				}
 			}
 
 		},
@@ -562,9 +549,9 @@ xjsfl =
 			runProject:function()
 			{
 				// get ordered views
-					var views 	= xjsfl.views.all;
-					var uri		= null;
-
+					var views 		= xjsfl.views.all;
+					var uri			= null;
+					
 				// loop through views and save, grabbing first JSFL document
 					for(var i = 0; i < views.length; i++)
 					{
@@ -574,13 +561,13 @@ xjsfl =
 
 						// grab first document
 							var _uri = (view.document || view.koDoc).file.URI
-							if(firstView == null && /\.jsfl$/.test(uri))
+							if(uri == null && /\.jsfl$/.test(_uri))
 							{
 								uri = _uri;
 							}
 
 					}
-
+					
 				// run the first view
 					if(uri)
 					{
@@ -590,7 +577,7 @@ xjsfl =
 					}
 					else
 					{
-						ko.statusBar.AddMessage('Cannot run xJSFL project! At least one tab needs to be a .jsfl file', 'xJSFL', 1000, true);
+						ko.statusBar.AddMessage('Cannot run xJSFL project! At least one tab needs to be a .jsfl file', 'xJSFL', 2000, true);
 					}
 
 				// return
@@ -619,5 +606,6 @@ xjsfl =
 		}
 }
 
-window.addEventListener("load", xjsfl.events.onLoad, false);
-xjsfl.events.onLoad();
+window.addEventListener('load', xjsfl.events.onLoad, false);
+
+//xjsfl.events.onLoad()
