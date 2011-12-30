@@ -2,9 +2,9 @@
   "keyboard_shortcut": "", 
   "name": "init", 
   "value": [
-    "xjsfl!@#_currentPos!@#_anchor.init(this);\n\n[[%tabstop:]]"
+    "xjsfl.init(this);\n\n[[%tabstop:]]!@#_currentPos!@#_anchor"
   ], 
-  "set_selection": "true", 
+  "set_selection": "false", 
   "version": "1.0.7", 
   "type": "snippet", 
   "indent_relative": "true"

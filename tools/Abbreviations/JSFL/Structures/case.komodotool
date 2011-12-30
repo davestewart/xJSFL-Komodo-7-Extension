@@ -2,11 +2,12 @@
   "keyboard_shortcut": "", 
   "name": "case", 
   "value": [
-    "case [[%tabstop:state]]:\n\t[[%tabstop:// code...!@#_currentPos!@#_anchor]]\nbreak;", 
-    "", 
-    "[[%tabstop:]]"
+    "case [[%tabstop:'[[%tabstop:case1]]']]:", 
+    "\t[[%tabstop:]]", 
+    "break;", 
+    "[[%tabstop:]]!@#_currentPos!@#_anchor"
   ], 
-  "set_selection": "true", 
+  "set_selection": "false", 
   "version": "1.0.7", 
   "type": "snippet", 
   "indent_relative": "true"

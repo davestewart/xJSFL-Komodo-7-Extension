@@ -2,7 +2,7 @@
   "keyboard_shortcut": "Ctrl+/, Ctrl+/", 
   "name": "com", 
   "value": [
-    "// --------------------------------------------------------------------------------\n// [[%tabstop:comment]]\n\n\t[[%tabstop:]]!@#_currentPos!@#_anchor"
+    "// --------------------------------------------------------------------------------\n// [[%tabstop:C!@#_currentPos!@#_anchoromment]]\n\n\t[[%tabstop]]"
   ], 
   "set_selection": "true", 
   "version": "1.0.7", 

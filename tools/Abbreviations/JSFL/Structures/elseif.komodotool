@@ -1,8 +1,8 @@
 {
   "keyboard_shortcut": "", 
-  "name": "do", 
+  "name": "elseif", 
   "value": [
-    "do\n{\n\t[[%tabstop:!@#_currentPos!@#_anchor]]\n}\nwhile([[%tabstop:condition]]);"
+    "else !@#_currentPos!@#_anchorif([[%tabstop:condition]])\n{\n\t[[%tabstop:]]\n}\n[[%tabstop:]]"
   ], 
   "set_selection": "true", 
   "version": "1.0.7", 
