@@ -66,7 +66,7 @@ class JSFLLangIntel(JavaScriptLangIntel):
     # add extra paths for codeintel
     extraPathsPrefName = "jsflExtraPaths"
 
-    log.info('TEST BY DAVE')
+    # log.info('TEST BY DAVE')
 
     # Tell the codeintel database that JSFL completions will use all known jsfl files.
     def __init__(self, *args, **kwargs):
@@ -79,7 +79,10 @@ class JSFLLangIntel(JavaScriptLangIntel):
     def stdlibs(self):
         catalog_lib = self.mgr.db.get_catalog_lib(lang, ["jsfl"])
         js_lib = self.mgr.db.get_stdlib('JavaScript')
-        return [catalog_lib, js_lib]
+
+        #return [catalog_lib, js_lib]
+
+        return [catalog_lib]
 
 class JSFLBuffer(JavaScriptBuffer):
     lang = lang
