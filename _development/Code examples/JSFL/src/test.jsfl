@@ -12,4 +12,5 @@ xjsfl.init(this);
 	Output.print(person);
 */
 
-fl.
+
+fl.createDocument();
