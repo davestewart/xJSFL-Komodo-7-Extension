@@ -28,6 +28,11 @@ class KoJSFLLanguage(koJavaScriptLanguage):
     _reg_clsid_ = "d7088ba0-909a-40e9-9d01-b90b12abd73c"
     _reg_categories_ = [("komodo-language", name)]
     defaultExtension = '.jsfl'
+    commentDelimiterInfo = {
+        "line": [ "//" ],
+        "block": [ ("/*", "*/") ],
+        "markup": "*",
+    }
 
     # Hack start: make a Komodo langinfo entry.
     def __init__(self, *args, **kwargs):
@@ -41,3 +46,5 @@ class KoJSFLLanguage(koJavaScriptLanguage):
         import styles
         styles.StateMap[self.name] = styles.StateMap['JavaScript'].copy()
     # Hack end:
+
+# comment to force rebuild of file
