@@ -1,0 +1,11 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "module", 
+  "value": [
+    "/**\n * [[%tabstop1:Panel Name]] module \n * @namespace\t[[%tabstop2:namespace]]\n */\nvar [[%tabstop2]] =\n{\n\t\n\t// ------------------------------------------------------------------------------------------------\n\t// constructor, \n\t\n\t\t/**\n\t\t * [[%tabstop1]] constructor\n\t\t */\n\t\tinit:function()\n\t\t{\n\t\t\t// set an arbitrary test value\n\t\t\t\tthis.value = '[[%date]]';\n\t\t\t\t\n\t\t\t// create a default config object\n\t\t\t\tthis.settings\t= this.loadConfig('[[%tabstop2]]');\n\t\t},\n\t\n\t// ------------------------------------------------------------------------------------------------\n\t// properties\n\t\n\t\t// test property\n\t\t\tvalue:null,\n\t\t\n\t\t// default config\n\t\t\tsettings:null,\n\t\t\t\n\t\t\t\n\t// ------------------------------------------------------------------------------------------------\n\t// public methods\n\t\n\t\t/**\n\t\t * Test method\n\t\t */\n\t\ttest:function()\n\t\t{\n\t\t\t// example method\n\t\t\t\tthis.log('[[%tabstop2]].test() called!');\n\t\t\t\t\n\t\t\t// return a value\n\t\t\t\treturn this.value;\n\t\t}\n\n\t// ------------------------------------------------------------------------------------------------\n\t// private functions\n\t\n\t\t[[%tabstop:// Add your own methods here...]]\n\t}\n\n// ------------------------------------------------------------------------------------------------\n// create module\n\n\tvar module = new xjsfl.classes.Module('[[%tabstop2]]', [[%tabstop2]], '[[%tabstop1]]');\n\t\n// ------------------------------------------------------------------------------------------------\n// test code\n\n\tmodule.test();\n\n\t\n\t\n!@#_currentPos!@#_anchor"
+  ], 
+  "set_selection": "true", 
+  "version": "1.0.7", 
+  "type": "snippet", 
+  "indent_relative": "true"
+}

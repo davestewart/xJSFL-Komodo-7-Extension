@@ -14,13 +14,28 @@ xjsfl =
 		events:
 		{
 
+			add:function(handler)
+			{
+				this.remove(handler);
+				window.addEventListener('keypress', handler, true);
+			},
+
+			remove:function(handler)
+			{
+				try
+				{
+					window.removeEventListener('keypress', handler, true);
+				}
+				catch(err)
+				{
+					// do nothing
+				}
+			},
+
 			onLoad:function(event)
 			{
 				// debug
-					//commandOutput('> xJSFL: initialised');
-
-				// auto-size autocomplete box
-					window.addEventListener('current_view_changed', xjsfl.tools.resizeAutocomplete, false);
+					//trace('> xJSFL: onLoad');
 
 				// set states
 					xjsfl.shortcuts.states.file		= xjsfl.prefs.getBool('xjsflShortcutFile');
@@ -28,25 +43,14 @@ xjsfl =
 					xjsfl.shortcuts.states.project	= xjsfl.prefs.getBool('xjsflShortcutProject');
 					xjsfl.shortcuts.states.library	= xjsfl.prefs.getBool('xjsflShortcutLibrary');
 
+				// debug
+					//alert('Prefs:' + (xjsfl.shortcuts.states.file || xjsfl.shortcuts.states.debug || xjsfl.shortcuts.states.project || xjsfl.shortcuts.states.library));
+					
 				// add listener if keyboard shortcuts are required
 					if(xjsfl.shortcuts.states.file || xjsfl.shortcuts.states.debug || xjsfl.shortcuts.states.project || xjsfl.shortcuts.states.library)
 					{
-						xjsfl.events.add();
+						xjsfl.events.add(xjsfl.events.onKeyPress);
 					}
-			},
-
-			add:function(type, scope, handler)
-			{
-				this.remove();
-				ko.views.manager.topView.addEventListener('keypress', this.onKeyPress, true);
-			},
-
-			remove:function(type, scope, handler)
-			{
-				if (autocode && autocode.onKeyPress)
-				{
-					ko.views.manager.topView.removeEventListener('keypress', this.onKeyPress, true);
-				}
 			},
 
 			onKeyPress:function(event)
@@ -56,8 +60,8 @@ xjsfl =
 				{
 					// flag state
 						var state = false;
-
-					// test
+						
+					// run file on library items
 						if(event.altKey && event.shiftKey && event.ctrlKey)
 						{
 							if(xjsfl.shortcuts.states.library)
@@ -65,6 +69,8 @@ xjsfl =
 								state = xjsfl.shortcuts.runScriptOnSelectedLibraryItems();
 							}
 						}
+						
+					// run project
 						else if(event.shiftKey && event.ctrlKey)
 						{
 							if(xjsfl.shortcuts.states.project)
@@ -72,6 +78,8 @@ xjsfl =
 								state = xjsfl.shortcuts.runProject();
 							}
 						}
+						
+					// run file
 						else if(event.ctrlKey)
 						{
 							if(xjsfl.shortcuts.states.file)
@@ -79,6 +87,8 @@ xjsfl =
 								state = xjsfl.shortcuts.runFile();
 							}
 						}
+						
+					// debug file
 						else if(event.altKey)
 						{
 							if(xjsfl.shortcuts.states.debug)
@@ -101,15 +111,15 @@ xjsfl =
 
 
 	// --------------------------------------------------------------------------------
-	// onLoad
+	// objects
 
 		objects:
 		{
-			json:		Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON),
-			prefs:		Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs,
-			file:		Components.classes["@activestate.com/koFileEx;1"].createInstance(Components.interfaces.koIFileEx),
-			localFile:	Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile),
-			clipboard:	Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper)
+			json:					Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON),
+			prefs:					Components.classes['@activestate.com/koPrefService;1'].getService(Components.interfaces.koIPrefService).prefs,
+			clipboard:				Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper),
+			get file(){	return		Components.classes["@activestate.com/koFileEx;1"].createInstance(Components.interfaces.koIFileEx) },
+			get localFile(){ return	Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile) }
 		},
 
 
@@ -150,7 +160,7 @@ xjsfl =
 					return xjsfl.objects.prefs.getBooleanPref(name);
 				};
 				return false;
-			},
+			}
 
 		},
 
@@ -164,21 +174,9 @@ xjsfl =
 			 */
 			copyViewURI:function ()
 			{
-				var uri = xjsfl.jsfl.getURI(ko.views.manager.currentView.koDoc.file.URI);
+				var document	= xjsfl.document.current;
+				var uri			= xjsfl.jsfl.getURI(document.file.URI);
 				xjsfl.objects.clipboard.copyString("'" + uri + "'");
-			},
-
-			/**
-			 * Sets the size of the code completion items box to 20
-			 */
-			resizeAutocomplete:function(event)
-			{
-				var view = event.originalTarget;
-				//var view = ko.views.manager.currentView;
-				if (view && view.scimoz)
-				{
-					view.scimoz.autoCMaxHeight = 20;
-				}
 			}
 
 		},
@@ -186,6 +184,16 @@ xjsfl =
 
 	// --------------------------------------------------------------------------------
 	// views
+	
+		document:
+		{
+		
+			current:function()
+			{
+				var view = ko.views.manager.currentView;
+				return view ? (view.document || view.koDoc) : null;
+			}
+		},
 
 		views:
 		{
@@ -237,7 +245,7 @@ xjsfl =
 						{
 							var tab = tabs[i];
 							var view = views[tab.linkedPanel];
-							if(view && view.koDoc)
+							if(view && (view.document || view.koDoc) )
 							{
 								orderedViews.push(view);
 							}
@@ -250,12 +258,12 @@ xjsfl =
 			/**
 			 * Saves the view, and prompts for a new filename if not yet saved
 			 * @param	{View}	view	A Komodo view
-			 * @returns	{Boolean}			A boolean indicating if the file was successfully saved or not
+			 * @returns	{Boolean}		A boolean indicating if the file was successfully saved or not
 			 */
 			save:function(view)
 			{
 				// variables
-					var doc		= view.koDoc;
+					var doc		= view.document || view.koDoc;
 					var file	= doc.file;
 					var saved	= false;
 
@@ -542,8 +550,8 @@ xjsfl =
 			{
 				// get ordered views
 					var views 		= xjsfl.views.all;
-					var firstView	= null;
-
+					var uri			= null;
+					
 				// loop through views and save, grabbing first JSFL document
 					for(var i = 0; i < views.length; i++)
 					{
@@ -552,23 +560,24 @@ xjsfl =
 							xjsfl.views.save(view);
 
 						// grab first document
-							if(firstView == null && /\.jsfl$/.test(view.koDoc.file.URI))
+							var _uri = (view.document || view.koDoc).file.URI
+							if(uri == null && /\.jsfl$/.test(_uri))
 							{
-								firstView = view;
+								uri = _uri;
 							}
 
 					}
-
+					
 				// run the first view
-					if(firstView)
+					if(uri)
 					{
 						ko.statusBar.AddMessage('Running xJSFL project...', 'xJSFL', 1000);
-						xjsfl.file.run(firstView.koDoc.file.URI);
+						xjsfl.file.run(uri);
 						return true;
 					}
 					else
 					{
-						ko.statusBar.AddMessage('Cannot run xJSFL project! At least one tab needs to be a .jsfl file', 'xJSFL', 1000, true);
+						ko.statusBar.AddMessage('Cannot run xJSFL project! At least one tab needs to be a .jsfl file', 'xJSFL', 2000, true);
 					}
 
 				// return
@@ -579,13 +588,14 @@ xjsfl =
 			{
 				// variables
 					var view	= ko.views.manager.currentView;
-					var saved	= xjsfl.views.save(view)
+					var saved	= xjsfl.views.save(view);
+					var uri		= (view.document || view.koDoc).file.URI;
 
 				// variables
-					if(saved && /.jsfl$/.test(view.koDoc.file.URI))
+					if(saved && /.jsfl$/.test(uri))
 					{
-						ko.statusBar.AddMessage('Running JSFL script on selected librray items...', 'xJSFL', 1000);
-						xjsfl.jsfl.run(view.koDoc.file.URI, 'lib');
+						ko.statusBar.AddMessage('Running JSFL script on selected library items...', 'xJSFL', 1000);
+						xjsfl.jsfl.run(uri, 'lib');
 						return true;
 					}
 
@@ -596,4 +606,6 @@ xjsfl =
 		}
 }
 
-window.addEventListener("load", xjsfl.events.onLoad, false);
+window.addEventListener('load', xjsfl.events.onLoad, false);
+
+//xjsfl.events.onLoad()

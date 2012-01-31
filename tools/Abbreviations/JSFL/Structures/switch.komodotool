@@ -2,9 +2,12 @@
   "keyboard_shortcut": "", 
   "name": "switch", 
   "value": [
-    "switch([[%tabstop:condition]])\n{\n\t!@#_currentPos!@#_anchor[[%tabstop:// ]]\n\t\n\tdefault:\n\t\t[[%tabstop:// ]]\n}"
+    "switch([[%tabstop:condition]])\n{\n\t[[%tabstop:]]\n\t", 
+    "\tdefault:", 
+    "\t\t", 
+    "}!@#_currentPos!@#_anchor"
   ], 
-  "set_selection": "true", 
+  "set_selection": "false", 
   "version": "1.0.7", 
   "type": "snippet", 
   "indent_relative": "true"

@@ -1,6 +1,6 @@
-clear();
+//clear();
 
-var path		= 'E:/05 - Commercial Projects/xJSFL/3 - development/xJSFL Komodo 7 Extension/_other/files/error.jsfl';
+//var path		= 'E:/05 - Commercial Projects/xJSFL/3 - development/xJSFL Komodo 7 Extension/_other/files/error.jsfl';
 /*
 
 trace(path)
@@ -17,4 +17,6 @@ if(file.exists)
 	trace('done')
 }
 */
-trace(typeof autocode)
+//trace(typeof autocode)
+
+xjsfl.events.onLoad()

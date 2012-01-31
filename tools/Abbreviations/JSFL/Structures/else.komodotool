@@ -2,7 +2,7 @@
   "keyboard_shortcut": "", 
   "name": "else", 
   "value": [
-    "else\n{\n\t[[%tabstop:// do something else]]\n}\n[[%tabstop:]]!@#_currentPos!@#_anchor"
+    "else\n{\n\t[[%tabstop:]]\n}\n[[%tabstop:]]!@#_currentPos!@#_anchor"
   ], 
   "set_selection": "true", 
   "version": "1.0.7", 

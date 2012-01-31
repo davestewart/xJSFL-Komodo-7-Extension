@@ -2,7 +2,8 @@
   "keyboard_shortcut": "", 
   "name": "doc", 
   "value": [
-    "/**\n * [[%tabstop:doccomment]]\n */!@#_currentPos!@#_anchor"
+    "/**\n * [[%tabstop:Comment]]", 
+    " * [[%tabstop:]]\n */!@#_currentPos!@#_anchor"
   ], 
   "set_selection": "false", 
   "version": "1.0.7", 

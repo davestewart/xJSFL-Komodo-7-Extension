@@ -2,8 +2,7 @@
   "keyboard_shortcut": "", 
   "name": "targetlist", 
   "value": [
-    "<targetlist class=\"control\" id=\"[[%tabstop1:id]]\" width=\"[[%tabstop:100]]\" height=\"[[%tabstop:]]\" flex=\"[[%tabstop:1]]\" pathtype=\"[[%tabstop:absolute]]\" />", 
-    "<property id=\"[[%tabstop1]]\" />[[%tabstop:!@#_anchorDEFAULT!@#_currentPos]]"
+    "<targetlist class=\"control\" id=\"[[%tabstop1:id]]\" width=\"[[%tabstop:100]]\" height=\"[[%tabstop:]]\" flex=\"[[%tabstop:1]]\" pathtype=\"[[%tabstop:absolute]]\" />\n<property id=\"[[%tabstop1]]\" />[[%tabstop:!@#_currentPos!@#_anchor]]"
   ], 
   "set_selection": "true", 
   "version": "1.0.7", 

@@ -2,7 +2,8 @@
   "keyboard_shortcut": "", 
   "name": "forin", 
   "value": [
-    "for(var [[%tabstop1:name]] in [[%tabstop2:object]])\n{\n\ttrace([[%tabstop1]] + ': ' + [[%tabstop2]][[[%tabstop1]]]);[[%tabstop:!@#_currentPos!@#_anchor]]\n}"
+    "for(var [[%tabstop1:name]] in [[%tabstop2:object]])\n{\n\tvar value = [[%tabstop2]][[[%tabstop1]]]!@#_currentPos!@#_anchor;", 
+    "\t[[%tabstop]]\n}"
   ], 
   "set_selection": "true", 
   "version": "1.0.7", 
