@@ -21,8 +21,8 @@
 	-->
 
 	<menupopup id="tabContextMenu">
-		<menuseparator id="buffertab-context-sep-tabtools" insertafter="buffertab-context-properties" />
-		<menuitem id="tabCopyFlashURI" class="menuitem-iconic-wide" label="Copy JSFL URI" observes="Tasks:copyJSFLURI" />
+		<menuseparator id="xjsfl-buffertab-context-sep" insertafter="morekomodo-copyDirectoryPath" />
+		<menuitem id="xjsfl-tabCopyFlashURI" insertafter="xjsfl-buffertab-context-sep" class="menuitem-iconic-wide" label="Copy URI string" observes="Tasks:copyJSFLURI" />
 	</menupopup>
 
 

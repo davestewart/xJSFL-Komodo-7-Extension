@@ -1,1 +1,1 @@
-E:\05 - Commercial Projects\xJSFL\3 - development\xJSFL Komodo 7 Extension
+E:\05 - Commercial Projects\xJSFL\3 - development\Komodo Extensions\xJSFL Komodo 7 Extension

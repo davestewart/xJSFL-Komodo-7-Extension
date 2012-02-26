@@ -45,7 +45,7 @@ xjsfl =
 
 				// debug
 					//alert('Prefs:' + (xjsfl.shortcuts.states.file || xjsfl.shortcuts.states.debug || xjsfl.shortcuts.states.project || xjsfl.shortcuts.states.library));
-					
+
 				// add listener if keyboard shortcuts are required
 					if(xjsfl.shortcuts.states.file || xjsfl.shortcuts.states.debug || xjsfl.shortcuts.states.project || xjsfl.shortcuts.states.library)
 					{
@@ -60,7 +60,7 @@ xjsfl =
 				{
 					// flag state
 						var state = false;
-						
+
 					// run file on library items
 						if(event.altKey && event.shiftKey && event.ctrlKey)
 						{
@@ -69,7 +69,7 @@ xjsfl =
 								state = xjsfl.shortcuts.runScriptOnSelectedLibraryItems();
 							}
 						}
-						
+
 					// run project
 						else if(event.shiftKey && event.ctrlKey)
 						{
@@ -78,7 +78,7 @@ xjsfl =
 								state = xjsfl.shortcuts.runProject();
 							}
 						}
-						
+
 					// run file
 						else if(event.ctrlKey)
 						{
@@ -87,7 +87,7 @@ xjsfl =
 								state = xjsfl.shortcuts.runFile();
 							}
 						}
-						
+
 					// debug file
 						else if(event.altKey)
 						{
@@ -174,7 +174,7 @@ xjsfl =
 			 */
 			copyViewURI:function ()
 			{
-				var document	= xjsfl.document.current;
+				var document	= xjsfl.document.current();
 				var uri			= xjsfl.jsfl.getURI(document.file.URI);
 				xjsfl.objects.clipboard.copyString("'" + uri + "'");
 			}
@@ -184,10 +184,10 @@ xjsfl =
 
 	// --------------------------------------------------------------------------------
 	// views
-	
+
 		document:
 		{
-		
+
 			current:function()
 			{
 				var view = ko.views.manager.currentView;
@@ -389,7 +389,7 @@ xjsfl =
 							var xjsflURI	= xjsfl.jsfl.getURI(xjsflPath);
 
 						// commands
-							var jsflURI		= xjsflURI + '/core/run/' +type+ '.jsfl';
+							var jsflURI		= xjsflURI + '/core/jsfl/run/' +type+ '.jsfl';
 							var textURI		= xjsflURI + '/core/temp/uri.txt';
 
 						// check run file exists
@@ -415,7 +415,7 @@ xjsfl =
 			/**
 			 * Tests a JSFL file, then attempts to read in any catched errors and open the file to the correct line
 			 *
-			 * @param		{String}		uri		The URI of teh file to test
+			 * @param		{String}		uri		The URI of the file to test
 			 */
 			debug:function(uri)
 			{
@@ -551,7 +551,7 @@ xjsfl =
 				// get ordered views
 					var views 		= xjsfl.views.all;
 					var uri			= null;
-					
+
 				// loop through views and save, grabbing first JSFL document
 					for(var i = 0; i < views.length; i++)
 					{
@@ -567,7 +567,7 @@ xjsfl =
 							}
 
 					}
-					
+
 				// run the first view
 					if(uri)
 					{
