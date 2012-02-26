@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codeintel version="2.0" name="xJSFL" description="xJSFL Framework - version 1.0">
+	<file lang="JSFL" doc="xJSFL Framework API for Flash" path="xJSFL">
+		<scope name="*" ilk="blob" lang="JSFL">
+			<!--
+
+				Top-level xJSFL variables
+
+			-->
+			<variable name="$dom" citdl="Document" doc="An xJSFL global shortcut to the current document DOM" />
+			<variable name="$timeline" citdl="Timeline" doc="An xJSFL global shortcut to the current Timeline" />
+			<variable name="$library" citdl="Library" doc="An xJSFL global shortcut to the current Library" />
+			<variable name="$selection" citdl="Array" doc="An xJSFL global shortcut to set and get the current selection" />
+			<!--
+
+				Top-level xJSFL functions
+
+			-->
+			<!--
+				core
+			-->
+			<scope name="trace" ilk="function" returns="" signature="trace(...args)" doc="Traces passed values to the Output panel" url="" />
+			<variable name="clear" citdl="OutputPanel.clear" />
+			<!--
+				file
+			-->
+			<scope name="load" ilk="function" returns="String" signature="populate(input, properties)" doc="Populates an input string with properties" url="">
+				<scope name="pathOrURI" ilk="argument" citdl="String" doc="The input string including {placeholder} variables" />
+				<scope name="properties" ilk="argument" citdl="Object" doc="Any instance or an Object of name:value pairs" />
+			</scope>
+			<scope name="save" ilk="function" returns="String" signature="populate(input, properties)" doc="Populates an input string with properties" url="">
+				<scope name="pathOrURI" ilk="argument" citdl="String" doc="The input string including {placeholder} variables" />
+				<scope name="content" ilk="argument" citdl="Object" doc="Any instance or an Object of name:value pairs" />
+			</scope>
+			<!--
+				string
+			-->
+			<scope name="populate" ilk="function" returns="String" signature="populate(input, properties)" doc="Populates an input string with properties" url="">
+				<scope name="input" ilk="argument" citdl="String" doc="The input string including {placeholder} variables" />
+				<scope name="properties" ilk="argument" citdl="Object" doc="Any instance or an Object of name:value pairs" />
+			</scope>
+			<scope name="format" ilk="function" returns="String" signature="populate(input, properties)" doc="Populates an input string with properties" url="">
+				<scope name="input" ilk="argument" citdl="String" doc="The input string including {placeholder} variables" />
+				<scope name="...args" ilk="argument" citdl="Object" doc="Any instance or an Object of name:value pairs" />
+			</scope>
+			<!--
+				development
+			-->
+			<variable name="inspect" citdl="Output.inspect" signature="inspect(obj, $depth, $label, $debug, $options, $callback)" doc="Output object to Output panel in hierarchical format (note that $ arguments are optional, and can be passed in any order)" />
+			<variable name="list" citdl="Output.list" signature="list(arr, properties, label, output)" doc="Lists the properties of an object in a human-readable format" />
+			<scope name="debug" ilk="function" returns="" signature="debug(obj, parameters, scope)" doc="Catch-all shortcut to xjsfl.debug methods, that can process an Error, Function or URI" url="">
+				<scope name="obj" ilk="argument" citdl="Error" doc="A JavaScript Error object" />
+				<scope name="obj" ilk="argument" citdl="Function" doc="The function to test" />
+				<scope name="obj" ilk="argument" citdl="String" doc="The URI or path of the file to load" />
+				<scope name="parameters" ilk="argument" citdl="Array" doc="An optional Array of arguments or Arguments object to pass to the function" />
+				<scope name="scope" ilk="argument" citdl="Object" doc="An optional scope to run the function in" />
+			</scope>
+		</scope>
+	</file>
+</codeintel>
