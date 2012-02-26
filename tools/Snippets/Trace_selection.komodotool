@@ -1,0 +1,12 @@
+{
+  "keyboard_shortcut": "Ctrl+Alt+T", 
+  "name": "Trace selection", 
+  "value": [
+    "[[%w]]", 
+    "\t!@#_currentPos!@#_anchortrace('[[%w]]');"
+  ], 
+  "set_selection": "true", 
+  "version": "1.0.7", 
+  "type": "snippet", 
+  "indent_relative": "true"
+}

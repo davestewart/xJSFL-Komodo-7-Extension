@@ -1,0 +1,18 @@
+{
+  "keyboard_shortcut": "Ctrl+Alt+Shift+T", 
+  "name": "try...catch", 
+  "value": [
+    "try", 
+    "{", 
+    "\t[[%s]]!@#_currentPos!@#_anchor", 
+    "}", 
+    "catch(error)", 
+    "{", 
+    "\tdebug(error);", 
+    "}"
+  ], 
+  "set_selection": "true", 
+  "version": "1.0.7", 
+  "type": "snippet", 
+  "indent_relative": "true"
+}
