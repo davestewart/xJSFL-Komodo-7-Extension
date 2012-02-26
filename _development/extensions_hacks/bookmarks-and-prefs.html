@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Design Challenge Tutorial:  Stupid XPI Tricks - Bookmarks and Prefs</title>
+</head>
+<body>
+<h2>Design Challenge Tutorial: Stupid XPI Tricks - Bookmarks and Prefs</h2>
+
+<h3>Install</h3>
+<ul><li>See directory stupid-extensions/bookmarks-and-prefs.</li>
+<li><b>Mac and Linux</b>: Make a file at ~/Profiles/stupid-tricks/extensions/bookmarks-and-prefs@evilbrainjono
+The contents of the file should be:<br/>
+~/stupid-extensions/bookmarks-and-prefs/</li>
+<li><b>Windows</b>: Make a file at %USERPROFILE%\Profiles\stupid-tricks\extensions\bookmarks-and-prefs@evilbrainjono
+The contents of the file should be:<br/>
+%USERPROFILE%\stupid-extensions\bookmarks-and-prefs\</li>
+</ul>
+
+<h3>What's it do?</h3>
+
+<ul><li>Creates several bookmarks.</li>
+<li>Sets several preferences.</li></ul>
+
+<h3>How does it work?</h3>
+
+<ul>
+<li>See file <a href="bookmarks-and-prefs/chrome/content/setup.js">bookmarks-and-prefs/chrome/content/setup.js</a></li>
+<li><b>Components.classes</b> and <b>Components.interfaces</b> -- always defined in extension javascript context.</li>
+<li>Let your extension request a Firefox component and get an interface to it.</li>
+<li>There are MANY components you can use; this extension demonstrates using two:   <b>Nav-Bookmarks-Service</b> and <b>Preferences-Service</b>.</li>
+<li>Other very useful components, not shown here, include those for reading/writing files on disk, manipulating the browsing history, etc.</li>
+<li>If you want to get really fancy, your extension can even create a component and register it, so that it will be available to other code.</li>
+</ul>
+
+<h3>Let's improve it</h3>
+
+<ul><li>Use about:config to find a preference.</li>
+<li>Use the Preferences service to print out the value of that preference.</li>
+<li>Use prefs.getCharPref( nameOfPref ); if it's a string.</li>
+<li>Try setting the value with prefs.setCharPref( nameOfPref, newValue );</li>
+</ul>
+
+<h3>Where to Learn More</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en/XPCOM_API_Reference">A big list of XPCOM components</a></li>
+<li><a href="https://developer.mozilla.org/en/Manipulating_bookmarks_using_Places">Manipulating bookmarks using Places</a></li>
+<li><a href="https://developer.mozilla.org/En/Using_the_Places_history_service">Using the Places history service</a></li>
+<li><a href="https://developer.mozilla.org/En/Code_snippets/Preferences">Sample code for using preferences</a></li>
+</ul>
+
+<h4><a href="dodgy-toolbar.html">Previous: Dodgy Toolbar</a> <a href="kittens-everywhere.html">Next: Kittens Everywhere</a></h4>
+
+</body>
+</html>

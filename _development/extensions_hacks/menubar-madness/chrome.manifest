@@ -1,0 +1,4 @@
+content  menubar-madness         chrome/content/
+locale   menubar-madness  en-US  chrome/locale/en-US/
+
+overlay  chrome://browser/content/browser.xul chrome://menubar-madness/content/browser.xul

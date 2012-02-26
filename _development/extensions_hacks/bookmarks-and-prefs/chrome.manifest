@@ -1,0 +1,4 @@
+content  bookmarks-and-prefs         chrome/content/
+locale   bookmarks-and-prefs  en-US  chrome/locale/en-US/
+
+overlay  chrome://browser/content/browser.xul chrome://bookmarks-and-prefs/content/browser.xul

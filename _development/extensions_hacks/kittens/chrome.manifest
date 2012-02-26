@@ -1,0 +1,5 @@
+content  kittens         chrome/content/
+locale   kittens  en-US  chrome/locale/en-US/
+
+overlay  chrome://browser/content/browser.xul chrome://kittens/content/browser.xul
+

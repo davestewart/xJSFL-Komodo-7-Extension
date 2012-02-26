@@ -1,0 +1,4 @@
+content  dodgy-toolbar         chrome/content/
+locale   dodgy-toolbar  en-US  chrome/locale/en-US/
+
+overlay  chrome://browser/content/browser.xul chrome://dodgy-toolbar/content/browser.xul

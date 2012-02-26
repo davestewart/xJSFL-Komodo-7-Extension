@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Design Challenge Tutorial:  Stupid XPI Tricks - Menubar Madness</title>
+</head>
+<body>
+<h2>Design Challenge Tutorial: Stupid XPI Tricks - Menubar Madness</h2>
+
+<h3>Install</h3>
+<ul><li>See directory stupid-extensions/menubar-madness</li>
+<li><b>Mac and Linux</b>: Make a file at ~/Profiles/stupid-tricks/extensions/menubar-madness@evilbrainjono
+The contents of the file should be:<br/>
+~/stupid-extensions/menubar-madness/</li>
+<li><b>Windows</b>: Make a file at %USERPROFILE%\Profiles\stupid-tricks\extensions\menubar-madness@evilbrainjono
+The contents of the file should be:<br/>
+%USERPROFILE%\stupid-extensions\menubar-madness\</li>
+</ul>
+
+<h3>What's it do?</h3>
+
+<ul><li>Reverses the names of all the memus in the main menu bar.</li></ul>
+
+<p><img src="menubar-madness.png"></p>
+
+<h3>How does it work?</h3>
+
+<ul>
+<li>See file <a href="menubar-madness/chrome/content/browser.xul">menubar-madness/chrome/content/browser.xul</a></li>
+</ul>
+
+<h3>Let's improve it</h3>
+
+<ul>
+<li>Add a command that calls a function defined in our javascript file:
+  <pre>
+  &lt;commandset id="mainCommandSet"&gt;
+    &lt;command id="cmd_doAThing" oncommand="Fixme.doAThing('Hey everybody!');"/&gt;
+  &lt;/commandset&gt;
+  </pre>
+</li>
+<li>Use DOM inspector to find the id of the popup under tools-menu.  Add a menu item that calls the command:
+  <pre>
+  &lt;menupopup id="??"&gt;
+    &lt;menuitem label="Do A Thing" command="cmd_doAThing"/&gt;
+  &lt;/menupopup&gt;
+  </pre>
+</li>
+
+<li>Use DOM inspector to find the id of the custom toolbar.  Add a button to the toolbar that calls the command:
+  <pre>
+  &lt;toolbar id="??"&gt;
+    &lt;button label="Do A Thing" command="cmd_doAThing"/&gt;
+  &lt;/toolbar&gt;
+  </pre>
+</li>
+<li>Restart Firefox and try it out!</li>
+</ul>
+
+<h3>Learn More</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en/XUL_Overlays">XUL Overlays</a></li>
+<li><a href="https://developer.mozilla.org/en/XUL/menuitem">XUL menu items</a></li>
+</ul>
+
+<h4><a href="index.html">Previous: Index</a> <a href="dodgy-toolbar.html">Next: Dodgy Toolbar</a></h4>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Design Challenge Tutorial:  Stupid XPI Tricks - Dodgy Toolbar</title>
+</head>
+<body>
+<h2>Design Challenge Tutorial: Stupid XPI Tricks - Dodgy Toolbar</h2>
+
+<h3>Install</h3>
+<ul><li>See directory stupid-extensions/dodgy-toolbar</li>
+<li><b>Mac and Linux</b>: Make a file at ~/Profiles/stupid-tricks/extensions/dodgy-toolbar@evilbrainjono
+The contents of the file should be:<br/>
+~/stupid-extensions/dodgy-toolbar/</li>
+<li><b>Windows</b>: Make a file at %USERPROFILE%\Profiles\stupid-tricks\extensions\dodgy-toolbar@evilbrainjono
+The contents of the file should be:<br/>
+%USERPROFILE%\stupid-extensions\dodgy-toolbar\</li>
+</ul>
+
+<h3>What's it do?</h3>
+
+<ul><li>Whenever you click any button in the main navigation toolbar, all the buttons are re-ordered randomly.</li></ul>
+
+<p><img src="dodgy-toolbar.png"></p>
+
+<h3>How does it work?</h3>
+
+<ul>
+<li>See file <a href="dodgy-toolbar/chrome/content/dodgy.js">dodgy-toolbar/chrome/content/dodgy.js</a></li>
+</ul>
+
+<h3>Let's Improve it</h3>
+
+<ul>
+<li>We'll add code to go through all the children of the custom toolbar and print out their ids.</li>
+</ul>
+
+<h3>Learn More</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/En/Sandbox/XUL/XUL_Element">XUL Elements</a></li>
+<li><a href="https://developer.mozilla.org/en/XUL_Reference">XUL Reference</a></li>
+</ul>
+
+<h4><a href="menubar-madness.html">Previous: Menubar Madness</a> <a href="bookmarks-and-prefs.html">Next: Bookmarks and Prefs</a></h4>
+
+
+</body>
+</html>

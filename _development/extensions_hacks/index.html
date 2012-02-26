@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Design Challenge Tutorial:  Stupid XPI Tricks</title>
+</head>
+<body>
+<h2>Design Challenge Tutorial: Stupid XPI Tricks</h2>
+
+<ul>
+<li>We'll go through four extension examples in this tutorial:
+    <ul><li><a href="menubar-madness.html">Menubar Madness</a></li>
+        <li><a href="dodgy-toolbar.html">Dodgy Toolbar</a></li>
+        <li><a href="kittens-everywhere.html">Kittens Everywhere</a></li>
+        <li><a href="bookmarks-and-prefs.html">Bookmarks and Preferences</a></li>
+    </ul>
+</li>
+<li>Use a throwaway profile for this tutorial.
+  <ul><li>Reminder: To make a throwaway profile, first make a directory like so:
+    <ul><li><b>Mac:</b> mkdir -p ~/Profiles/stupid-tricks</li>
+        <li><b>Windows:</b> md "%USERPROFILE%\Projects\stupid-tricks" </li>
+        <li><b>Linux:</b> mkdir -p ~/Profiles/stupid-tricks</li>
+    </ul></li>
+    <li>Then go to the command line and launch a separate Firefox instance, running the new profile, like so:
+    <ul><li><b>Mac:</b> /Applications/Firefox.app/Contents/MacOS/firefox -profile ~/Profiles/stupid-tricks -no-remote</li>
+        <li><b>Windows:</b>  "C:\Program Files\Mozilla Firefox\firefox.exe" -profile "%USERPROFILE%\Profiles\stupid-tricks" -no-remote</li>
+        <li><b>Linux:</b> /usr/bin/firefox -profile ~/Profiles/stupid-tricks -no-remote</li>
+    </ul></li>
+  </ul>
+</li>
+<li>The install instructions on the rest of the pages assume that you put the stupid-tricks folder in your home directory, and that you created a throwaway profile at Profiles/stupid-tricks inside your home directory.</li>
+<li>We'll be using DOM inspector. <a href="https://addons.mozilla.org/en-US/firefox/addon/6622">Download here</a> (for Firefox 3).</li>
+</ul>
+
+<p><img src="DOM_inspector.png"></p>
+<ul><li>Tools menu -> DOM inspector</li>
+<li>File menu -> Inspect chrome document -> choose main firefox window (usually the first item)</li>
+<li>Click the button that looks like a mouse pointer clicking a button</li>
+<li>Switch back to the main Firefox window and click on the item of interest.</li>
+</ul>
+<h4><a href="menubar-madness.html">Next: Menubar Madness</a></h4>
+
+
+</body>
+</html>

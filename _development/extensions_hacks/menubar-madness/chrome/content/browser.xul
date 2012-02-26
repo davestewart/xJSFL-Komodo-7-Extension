@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <menu id="file-menu" label="eliF"/>
+  <menu id="edit-menu" label="tidE"/>
+  <menu id="view-menu" label="weiV"/>
+  <menu id="history-menu" label="yrotsiH"/>
+  <menu id="bookmarksMenu" label="skramkooB"/>
+  <menu id="tools-menu" label="slooT"/>
+  <menu id="windowMenu" label="wodniW"/>
+  <menu id="helpMenu" label="pleH"/>
+
+  <script type="application/x-javascript"
+          src="chrome://menubar-madness/content/fixme.js"/>
+  <!-- TODO make a command here, with a menu item and button that refer to it-->
+</overlay>
