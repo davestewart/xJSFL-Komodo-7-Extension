@@ -1,0 +1,6 @@
+/* Effective stylesheet produced by snapshot save */
+.flexselect_dropdown { display: none; position: absolute; z-index: 999; margin: 0pt; padding: 0pt; border: 1px solid windowframe; max-height: 200px; overflow-x: hidden; overflow-y: auto; background-color: window; color: windowtext; text-align: left; }
+.flexselect_dropdown ul { width: 100%; list-style: none outside none; padding: 0pt; margin: 0pt; }
+.flexselect_dropdown li { margin: 0px; padding: 2px 5px; cursor: pointer; display: block; width: 100%; font: menu; overflow: hidden; }
+.flexselect_selected { background-color: highlight; color: highlighttext; }
+a.ninja_search_activation { display: inline-block; width: 22px; height: 20px; background: url("urn:not-loaded:http://drnic.github.com/ninja-search-js/dist/images/ninja_search.png") no-repeat scroll 0% 0% transparent; text-indent: -9001px; text-align: left; cursor: pointer; }

@@ -1,0 +1,92 @@
+/* Effective stylesheet produced by snapshot save */
+html { margin: 0pt; padding: 0pt; background-color: rgb(226, 227, 232); }
+body { font-family: "Trebuchet MS",Arial,Helvetica,sans-serif; padding: 0pt 2em; line-height: 1.4; background-color: rgb(252, 252, 252); width: 80%; min-width: 20em; max-width: 50em; margin: 10px auto; border: 2px solid rgb(238, 238, 238); }
+@media (max-width: 320px) {
+  body { width: auto; max-width: none; margin: 0pt; border: medium none; }
+}
+dt { font-weight: bold; }
+img { vertical-align: middle; }
+article, aside, footer, header { display: block; margin: 1em 0pt; }
+nav { display: block; margin: 0pt; }
+header a, h1 a, h2 a, h3 a { color: rgb(0, 0, 238) ! important; border-bottom: medium none; }
+a { text-decoration: none; border-bottom: 1px solid; }
+a:link, cite a:link { color: rgb(0, 0, 238); border-color: rgb(0, 0, 238); }
+a:visited, cite a:visited { color: rgb(85, 26, 134); border-color: rgb(85, 26, 134); }
+a:hover { color: darkred ! important; background-color: rgb(255, 255, 204) ! important; border-color: darkred ! important; }
+blockquote { padding: 0pt 2em; margin: 1.33em 2em; border-left: 2em solid rgb(230, 233, 249); color: rgb(68, 68, 68); }
+blockquote address { text-align: right; font-size: smaller; }
+blockquote address a { color: rgb(137, 142, 121); }
+pre, code, kbd { font-size: 1em; font-style: normal; font-weight: normal; font-family: Consolas,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New"; }
+pre { font-size: small; border: 1px solid rgb(231, 231, 239); background-color: rgb(246, 246, 249); padding: 1em; }
+header { margin-top: 0pt; padding: 1ex 0pt; }
+body > header { color: rgb(0, 0, 238); border-bottom: 1px solid rgb(0, 0, 238); }
+footer { padding: 1ex 0pt; font-size: smaller; margin-bottom: 0pt; }
+body > footer { border-top: 1px solid black; margin-top: 3em; font-size: x-small; padding: 0pt; color: rgb(137, 142, 121); }
+article h2 { border-bottom: 1px solid rgb(204, 204, 255); }
+header h1 { font-style: italic; font-size: 1.25em; margin: 0pt; }
+nav ul { list-style: none outside none; text-align: right; margin: 0pt; padding: 0pt; }
+nav ul.sub-menu { text-align: left; font-size: small; }
+nav li { display: inline; margin-left: 1ex; }
+header nav li { border-left: 2px solid; padding-left: 1ex; }
+nav li:first-child { border-left: medium none; margin-left: 0pt; }
+article header { border-bottom: medium none; }
+article footer { border-top: medium none; }
+.meta { margin: 1em 0pt 1.33em 1.33em; padding: 0pt; color: rgb(137, 142, 121); }
+.meta a { color: inherit; }
+.meta cite { color: black; font-style: normal; }
+.note { background-color: rgb(255, 255, 204); padding: 0pt 1em; border: 1px solid rgb(238, 238, 187); }
+.note blockquote { border-color: rgb(238, 238, 187); }
+.footnote { font-style: italic; }
+.error { color: darkred; }
+fieldset { margin: 0pt; padding: 0pt; border: medium none; }
+form.contact fieldset { background-color: rgb(242, 243, 248); border: 1px solid rgb(230, 233, 249); padding: 1em; }
+form.contact fieldset p { margin: 0pt; clear: left; }
+form.contact p label { display: inline; float: left; width: 6em; padding: 3px 0pt; }
+form.contact p input { display: inline; float: left; width: 34em; border: 2px solid rgb(230, 233, 249); }
+form.contact textarea { display: inline; float: left; width: 40em; margin-top: 1em; border: 2px solid rgb(230, 233, 249); }
+#weblog-single header h2 { color: black; }
+#prev-next { font-size: smaller; }
+#prev-next span, #comments .permalink span { display: none; }
+#prev-next .prev { float: left; }
+#prev-next .prev:before { content: "←"; margin-right: 1ex; }
+#prev-next .next { float: right; }
+#prev-next .next:after { content: "→"; margin-left: 1ex; }
+#prev-next nav:after { content: " "; clear: both; }
+#comments article { padding: 10px 0pt 20px 40px; }
+#comments article:after { display: block; content: ""; margin: 0pt auto; border-bottom: 1px solid rgb(230, 233, 249); }
+.trackback * { color: rgb(137, 142, 121) ! important; border-color: rgb(137, 142, 121) ! important; }
+#comments .permalink { margin: 0pt 0pt -2.33em -40px; }
+#comments .preview article { padding-top: 0pt; border-left: 20px solid rgb(170, 102, 102); }
+blockquote.verse { margin: auto; font-style: italic; font-size: 1.1em; font-family: "Times New Roman",Times,serif; text-align: center; width: 24em; background-color: ivory; border: 1px solid black; color: rgb(99, 25, 25); padding: 1em; }
+blockquote.verse h4 { margin-top: 0pt; text-decoration: underline; }
+blockquote.verse p { margin: 0pt; }
+blockquote.verse hr { width: 25%; height: 1px; }
+.highlight { color: black; }
+.highlight span { display: inline ! important; }
+.highlight .comment { color: green; }
+.highlight .conditional { background: none repeat scroll 0% 0% rgb(255, 255, 160); }
+.highlight .string, .highlight .regexp, .highlight .number { color: darkred; }
+.highlight .keyword { color: blue; }
+.highlight .special { color: red; }
+.highlight .tag { color: purple; font-weight: bold; }
+.highlight .attribute { font-weight: bold; }
+.highlight .attribute.value { color: blue; font-weight: normal; }
+.highlight .entity { color: orangered; }
+.highlight .processing-instruction { color: orchid; font-style: italic; }
+.html .doctype { color: steelblue; font-style: italic; }
+.css .comment { color: gray; }
+.css .selector { color: darkred; font-weight: bold; }
+.css .at_rule { color: orangered; }
+.css .property { font-weight: bold; }
+.css .property.value { color: blue; font-weight: normal; }
+.javascript .global { color: teal; }
+.javascript .base2 { color: purple; }
+@media print {
+  html { background-color: white; }
+  body { margin: 0pt; width: auto; max-width: none; font-size: medium; border: medium none; background-color: white; }
+  body > header, nav, form { display: none ! important; }
+  header, a { color: black ! important; }
+  a { border: medium none ! important; }
+  a[href]:after { content: " (" attr(href) ")"; font-size: smaller; }
+  #home-page a[href]:after, #my-page a[href]:after, .meta a[href]:after, .permalink a[href]:after { content: ""; }
+}

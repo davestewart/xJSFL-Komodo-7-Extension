@@ -1,0 +1,29 @@
+/* Effective stylesheet produced by snapshot save */
+h2 { margin: 0.5em 0em; font-weight: normal; font-size: 1em; }
+hr { clear: both; }
+.version { float: right; }
+.description { float: left; }
+form { padding: 0pt; margin: 0pt; }
+textarea { margin: 0pt; white-space: pre-wrap; word-wrap: break-word; }
+#form textarea { clear: both; width: 98%; margin-top: 4px; padding: 0pt 2px; font-family: monospace; }
+@media screen and (min-width: 0px) {
+  #form textarea { width: 100%; }
+}
+textarea.disabled, .disabled textarea { background-color: rgb(238, 238, 238); border: 2px solid rgb(137, 142, 121); }
+.disabled, .disabled * { color: rgb(137, 142, 121) ! important; }
+#output { background-color: rgb(240, 240, 240); border-color: rgb(204, 204, 204); }
+#controls { float: right; text-align: right; }
+#controls select { font-size: 0.83em; vertical-align: top; }
+#message { font-size: x-small; margin-top: 0.5em; }
+.error { color: rgb(170, 51, 51); }
+#form #message { margin: 0pt 0pt 1em; float: right; }
+#help { float: right; }
+#form p { margin: 0pt; }
+#form p.form-buttons, #form #controls { margin: 1em 0pt; }
+p.form-buttons button { margin-right: 0.2em; }
+.menu { display: none; }
+#disabled { font-weight: bold; text-align: center; display: none; color: rgb(0, 0, 0) ! important; }
+.disabled #disabled { display: block; }
+#upload-script { display: none; }
+p.footnote { margin-bottom: 0pt; float: left; }
+#load-script, #save-script { display: none; }
