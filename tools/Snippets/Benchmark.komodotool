@@ -1,0 +1,16 @@
+{
+  "keyboard_shortcut": "", 
+  "name": "Benchmark", 
+  "value": [
+    "Timer.start();", 
+    "for(var i = 0; i < 1000; i++)", 
+    "{", 
+    "\t[[%tabstop:]][[%s]]!@#_currentPos!@#_anchor", 
+    "}", 
+    "Timer.stop();"
+  ], 
+  "set_selection": "true", 
+  "version": "1.0.7", 
+  "type": "snippet", 
+  "indent_relative": "true"
+}
