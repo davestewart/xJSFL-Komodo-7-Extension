@@ -45,6 +45,7 @@ from codeintel2.lang_javascript import (JavaScriptLexer,
                                         JavaScriptBuffer,
                                         JavaScriptImportHandler,
                                         JavaScriptCILEDriver)
+from codeintel2.tree_javascript import JavaScriptTreeEvaluator
 
 #---- globals
 
@@ -60,9 +61,20 @@ class JSFLLexer(JavaScriptLexer):
     def __init__(self, mgr):
         JavaScriptLexer.__init__(self, mgr)
 
+class JSFLTreeEvaluator(JavaScriptTreeEvaluator):
+    @property
+    def _global_var(self):
+        """
+        The type of the global variable
+        """
+        # Fix to prevent the Window object being searched
+        # for global variables in JSFL. See:
+        #    http://bugs.activestate.com/show_bug.cgi?id=93352#c1
+        return None
+
 class JSFLLangIntel(JavaScriptLangIntel):
     lang = lang
-
+    _evaluatorClass = JSFLTreeEvaluator
     # add extra paths for codeintel
     extraPathsPrefName = "jsflExtraPaths"
 
