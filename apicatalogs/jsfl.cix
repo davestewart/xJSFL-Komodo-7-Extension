@@ -436,6 +436,7 @@
 			<variable name="app" citdl="Flash"/>
 			<variable name="window" citdl="Window"/>
 			<variable name="document" citdl="Document"/>
+			<variable name="Window" citdl="Window"/>
 			<!--
 
 				Top-level xJSFL variables
