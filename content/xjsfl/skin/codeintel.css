@@ -1,0 +1,11 @@
+
+	.languageicon[language="JSFL"],
+	treechildren::-moz-tree-image(LanguageJSFL) {
+		list-style-image: url("chrome://xjsfl/content/xjsfl/skin/jsfl-16.png");
+		}
+		
+	.languageicon[language="JavaScript"],
+	treechildren::-moz-tree-image(LanguageJavaScript) {
+		list-style-image: url("chrome://xjsfl/content/xjsfl/skin/js-16.png");
+		}
+

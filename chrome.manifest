@@ -1,11 +1,11 @@
-content		xjsfl																							content/
+content		xjsfl						content/
+skin		xjsfl		default			skin/
 
-skin		xjsfl									default													skin/
+overlay		chrome://komodo/content/komodo.xul					chrome://xjsfl/content/xjsfl/main/xjsfl.xul
+overlay		chrome://komodo/content/pref/pref.xul				chrome://xjsfl/content/xjsfl/prefs/tree.xul
 
-style		chrome://komodo/content/komodo.xul		chrome://xjsfl/skin/xjsfl.css
-
-overlay		chrome://komodo/content/komodo.xul		chrome://xjsfl/content/xjsfl.xul
-overlay		chrome://komodo/content/pref/pref.xul	chrome://xjsfl/content/pref/xjsfl-pref.xul
+style		chrome://komodo/content/pref/pref-codeintel.xul		chrome://xjsfl/content/xjsfl/skin/codeintel.css
 
 manifest	components/component.manifest
 
+manifest	content/xjsflpro/chrome.manifest

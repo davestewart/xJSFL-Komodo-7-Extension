@@ -76,7 +76,7 @@ class JSFLLangIntel(JavaScriptLangIntel):
     lang = lang
     _evaluatorClass = JSFLTreeEvaluator
     # add extra paths for codeintel
-    extraPathsPrefName = "jsflExtraPaths"
+    extraPathsPrefName = "jsfl.paths.extra"
 
     # log.info('TEST BY DAVE')
 

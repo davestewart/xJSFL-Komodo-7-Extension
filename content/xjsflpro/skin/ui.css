@@ -1,0 +1,19 @@
+
+	#window_xjsflDebugger{
+		min-height: 200px;
+	}
+	
+	treecell.numeric{
+		text-align: right;
+		margin-right:3px;
+		color:red;
+		background-color: blue;
+	}
+	
+	treechildren::-moz-tree-cell
+	{
+	   border-left: outset white;
+	   border-width: 1px;
+	   padding: 0px 2px 0px 2px;
+	}
+

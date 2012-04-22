@@ -3,6 +3,7 @@ xjsfl.init(this);
 
 /*
 // instantiate a new person
+
 	var person = new Person('Dave', 36);
 
 // check the person's date of birth
@@ -14,3 +15,13 @@ xjsfl.init(this);
 
 
 fl.createDocument();
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<window onload="onLoad();" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript;version=1.7" src="chrome://xjsfl/content/xjsfl/test/prefs.js"/>
+	
+	<vbox align="center" flex="1">
+		<checkbox id="checkbox" label="TEST" flex="1" />
+	</vbox>
+
+</window>

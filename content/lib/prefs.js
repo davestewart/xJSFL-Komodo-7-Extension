@@ -14,24 +14,33 @@
 	// ----------------------------------------------------------------------------------------------------
 	// setup
 	
-		if( ! ko.extensions )ko.extensions = {};
-		if( ! ko.extensions.xjsfl )ko.extensions.xjsfl = {};
-		if( ! ko.extensions.xjsfl.lib )ko.extensions.xjsfl.lib = {};
+		if( ! window.xjsflLib ) xjsflLib = {};
 
 	// ----------------------------------------------------------------------------------------------------
 	// code
 	
-		ko.extensions.xjsfl.lib.prefs =
+		xjsflLib.Prefs = function(prefSet)
 		{
+			this.prefSet = prefSet || ko.prefs;
+		}
+		
+		xjsflLib.Prefs.prototype =
+		{
+			// ----------------------------------------------------------------------------------------------------
+			// variables
+			
+				prefSet:null,
+			
 			// ----------------------------------------------------------------------------------------------------
 			// getters
 			
 				/**
 				 * Gets a preference
-				 * @param	{String}	name	The preference name
-				 * @returns	{Object}			The preference value, or undefined if it doesn't exist
+				 * @param	{String}	name			The preference name
+				 * @param	{Object}	defaultValue	The default value, should the preference not be set yet
+				 * @returns	{Object}					The preference value, or undefined if it doesn't exist
 				 */
-				get:function(name)
+				get:function(name, defaultValue)
 				{
 					var methods =
 					[
@@ -40,52 +49,55 @@
 						this.getDouble,
 						this.getLong,
 					];
-					
+
 					for each(var method in methods)
 					{
-						var value = method(name);
+						var value = method.call(this, name);
 						if(typeof value !== 'undefined')
 						{
+							//alert('GET:' + [name, value])
 							return value;
 						}
 					}
-					return undefined;
+					return defaultValue;
 				},
 				
-				getString:function(name)
+				getString:function(name, defaultValue)
 				{
-					if(ko.prefs.hasStringPref(name))
+					if(this.prefSet.hasStringPref(name))
 					{
-						return ko.prefs.getStringPref(name);
+						return this.prefSet.getStringPref(name);
 					}
-					return undefined;
+					return defaultValue;
 				},
 				
-				getBoolean:function(name)
+				getBoolean:function(name, defaultValue)
 				{
-					if(ko.prefs.hasBooleanPref(name))
+					//trace('Get bool:' + this.prefSet.getBooleanPref(name))
+					if(this.prefSet.hasBooleanPref(name))
 					{
-						return ko.prefs.getBooleanPref(name);
+						//trace('Get bool:' + this.prefSet.getBooleanPref(name) + ' ' + typeof this.prefSet.getBooleanPref(name))
+						return this.prefSet.getBooleanPref(name);
 					}
-					return undefined;
+					return defaultValue;
 				},
 			
-				getLong:function(name)
+				getDouble:function(name, defaultValue)
 				{
-					if(ko.prefs.hasLongPref(name))
+					if(this.prefSet.hasDoublePref(name))
 					{
-						return ko.prefs.getLongPref(name);
+						return this.prefSet.getDoublePref(name);
 					}
-					return undefined;
+					return defaultValue;
 				},
 			
-				getDouble:function(name)
+				getLong:function(name, defaultValue)
 				{
-					if(ko.prefs.hasDoublePref(name))
+					if(this.prefSet.hasLongPref(name))
 					{
-						return ko.prefs.getDoublePref(name);
+						return this.prefSet.getLongPref(name);
 					}
-					return undefined;
+					return defaultValue;
 				},
 			
 			
@@ -100,13 +112,16 @@
 				 */
 				set:function(name, value)
 				{
+					//trace('set: ' + [name, typeof value, value])
 					if(typeof value === 'boolean')
 					{
 						this.setBoolean(name, value);
+						//trace('Set bool:' + this.prefSet.getBooleanPref(name))
+
 					}
 					else if(typeof value === 'number')
 					{
-						this.setLong(name, value);
+						this.setDouble(name, value);
 					}
 					else
 					{
@@ -117,16 +132,31 @@
 			
 				setString:function(name, value)
 				{
-					return ko.prefs.setStringPref(name, value);
+					return this.prefSet.setStringPref(name, value);
 				},
 				
 				setBoolean:function(name, value)
 				{
-					return ko.prefs.setBooleanPref(name, value);
+					return this.prefSet.setBooleanPref(name, value);
+				},
+			
+				setDouble:function(name, value)
+				{
+					return this.prefSet.setDoublePref(name, value);
 				},
 			
 				setLong:function(name, value)
 				{
-					return ko.prefs.setLongPref(name, value);
+					return this.prefSet.setLongPref(name, value);
 				},
+
+			// ----------------------------------------------------------------------------------------------------
+			// utils
+			
+				toString:function()
+				{
+					var name = window.ko ? (this.prefSet == ko.prefs ? 'ko' : 'window') : 'window';
+					return '[object Prefs type="' +name + '"]'
+				}
+			
 		}

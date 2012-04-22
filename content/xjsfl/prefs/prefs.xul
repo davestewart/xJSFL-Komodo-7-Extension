@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" [
+  <!ENTITY % prefDTD SYSTEM "chrome://komodo/locale/pref/pref.dtd">
+  %prefDTD;
+  <!ENTITY % prefDTD.INTERNAL SYSTEM "chrome://komodo/locale/pref-internal.dtd">
+  %prefDTD.INTERNAL;
+]>
+
+<?xul-overlay href="chrome://xjsfl/content/main/xjsfl.pro/prefs.xul"?>
+
+<!-- Copyright (c) 2000-2011 ActiveState Software Inc.
+	 See the file LICENSE.txt for licensing information. -->
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin"?>
+<?xml-stylesheet type="text/css" href="chrome://komodo/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://komodo/skin/global/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://komodo/skin/bindings/buttons.css"?>
+<?xml-stylesheet type="text/css" href="chrome://komodo/skin/bindings/widgets.css"?>
+<?xml-stylesheet type="text/css" href="chrome://komodo/skin/bindings/listbox.css"?>
+<?xml-stylesheet type="text/css" href="chrome://komodo/skin/prefs/prefs.css"?>
+
+<?xml-stylesheet type="text/css" href="chrome://xjsfl/content/xjsfl/skin/prefs.css"?>
+
+<window
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	class="kodialog"
+	orient="vertical"
+	onload="onLoad();"
+	>
+
+	<script type="application/x-javascript;version=1.7" src="chrome://xtk/content/xtk.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/library/logging.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/library/dialogs.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/library/windowManager.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/library/filepickers.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/library/uriparse.js"/>
+	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/pref/koPrefUtils.js" />
+
+	<script type="application/x-javascript;version=1.7" src="chrome://xjsfl/content/xjsfl/prefs/prefs.js"/>
+	
+	<!-- This main vbox is to ensure *all* the pref widgets are accessible, as it adds a scrollbar when the contents are too long. -->
+	
+	<vbox flex="1" class="autoscroll">
+
+		<groupbox orient="vertical" id="installation">
+			<caption label="xJSFL" />
+			<description>Specify the path to your xJSFL installation folder.</description>
+			<hbox align="center">
+				<textbox id="xjsflPath" flex="1"/>
+				<button label="Browse..." oncommand="setXJSFLPath();" />
+			</hbox>
+		</groupbox>
+
+		<groupbox orient="vertical" id="directories">
+			<caption label="JSFL Directories"/>
+			<description>Specify any directories that you want Komodo to use for autocomplete and calltips. Komodo will recursively scan these directories for information.</description>
+			<pathlist id="jsflExtraPaths"
+					  flex="1"
+					  seltype="multiple"
+					  rows="4"
+					  />
+		</groupbox>
+
+		<groupbox orient="vertical" id="shortcuts">
+			
+			<caption label="Publishing shortcuts"/>
+			<description>You can associate Flash-style publishing keyboard shortcuts in Komodo to make your JSFL development easier (requires restart).</description>
+
+			<vbox id="box_execFile" class="xjsfl">
+				<checkbox id="execFile" label="Execute File (CTRL+Enter)" />
+				<description id="execFileDesc" class="indented">Executes the current JSFL file</description>
+			</vbox>
+			
+		</groupbox>
+
+	</vbox>
+
+</window>

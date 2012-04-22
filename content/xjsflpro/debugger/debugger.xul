@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" [
+  <!ENTITY % todoDTD SYSTEM "chrome://xjsflpro/locale/xjsflpro.dtd">
+  %todoDTD;
+]>
+
+<?xml-stylesheet href="chrome://komodo/skin" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/global/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/bindings/scrolltabs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/bindings/sidebar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/bindings/views.css" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/bindings/widgets.css" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/toolbar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://komodo/skin/platform.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://xjsfl/xjsflpro/skin/ui.css" type="text/css"?>
+
+<window 
+	id="window_xjsflDebugger"
+	title="xJSFL Debugger"
+	height="200"
+	persist="width height screenX screenY"
+	onkeydown="onKeyDown(event)"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="build()"
+	>
+		
+    <hbox align="center">
+		<toolbarbutton id="toolbar-prev-line"
+			class="list-item-up-icon button-toolbar-a"
+			tooltiptext="Previous Line"
+			oncommand="selectLine(-1);" />
+		<toolbarbutton id="toolbar-next-line"
+			class="list-item-down-icon button-toolbar-a"
+			tooltiptext="Next Line"
+			oncommand="selectLine(1);" />
+		
+        <label id="toolbar-message" style="height:15px;" value="" />
+		
+        <separator flex="1"/>
+	</hbox>
+	
+	<tree
+		id="tree"
+		flex="1"
+		seltype="single"
+		hidecolumnpicker="true"
+		style="margin-bottom:4px; width:1000px;"
+		onselect="onSelect(event);"
+		ondblclick="onDoubleClick(event);">
+		
+		<treecols id="tree-cols">
+			<treecol id="tree-cols-num"
+				label="#"
+				persist="width"
+				style="width: 2em; text-align:right; padding-right:5px;" />
+			<treecol id="tree-cols-path"
+				label="Path"
+				primary="true"
+				flex="1"
+				persist="width"
+				style="width: 50%;"
+				crop="left"
+				/>
+			<splitter class="tree-splitter" />
+			<treecol id="tree-cols-line"
+				label="Line"
+				persist="width"
+				style="width: 4em; text-align:right; padding-right:5px;"
+				/>
+			<splitter class="tree-splitter" />
+			<treecol id="tree-cols-code"
+				label="Code"
+				persist="width"
+				flex="1"
+				/>
+		</treecols>
+		<treechildren id="tree-body" flex="1">
+			<!--
+			<treeitem>
+				<treerow>
+					<treecell label="file"/>
+					<treecell label="line"/>
+					<treecell label="content"/>
+				</treerow>
+			</treeitem>
+			-->
+		</treechildren>
+	</tree>
+
+    <script type="application/x-javascript" src="chrome://xjsfl/content/xjsflpro/debugger/debugger.js" />
+
+</window>

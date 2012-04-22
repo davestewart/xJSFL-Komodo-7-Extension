@@ -4,11 +4,11 @@
 
 <!DOCTYPE overlay SYSTEM "chrome://xjsfl/locale/pref.dtd">
 
-<overlay id="xjsflPrefOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="xjsfl-prefsOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<treechildren id="panelChildren">
-		<treeitem id="uiXJSFLMain">
+		<treeitem id="prefs_xjsflTreeItem">
 			<treerow>
-				<treecell class="treecell-indent" url="chrome://xjsfl/content/pref/xjsfl-overlay.xul" label="xJSFL"/>
+				<treecell class="treecell-indent" url="chrome://xjsfl/content/xjsfl/prefs/prefs.xul" label="xJSFL"/>
 			</treerow>
 		</treeitem>
 	</treechildren>

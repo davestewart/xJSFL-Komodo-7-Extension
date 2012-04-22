@@ -14,15 +14,12 @@
 	// ----------------------------------------------------------------------------------------------------
 	// setup
 	
-		if( ! ko.extensions )ko.extensions = {};
-		if( ! ko.extensions.xjsfl )ko.extensions.xjsfl = {};
-		if( ! ko.extensions.xjsfl.lib )ko.extensions.xjsfl.lib = {};
-
+		if( ! window.xjsflLib ) xjsflLib = {};
 
 	// ----------------------------------------------------------------------------------------------------
 	// setup
 	
-		ko.extensions.xjsfl.lib.views = 
+		xjsflLib.views = 
 		{
 			/**
 			 * Get the current view;
@@ -126,8 +123,3 @@
 					return saved;
 			}
 		}
-		
-		
-		
-		
-

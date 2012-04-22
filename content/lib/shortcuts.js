@@ -171,7 +171,7 @@
 							}
 						}
 					}
-					return true;
+					//return true;
 				},
 				
 				toString:function()
@@ -183,11 +183,9 @@
 	// ----------------------------------------------------------------------------------------------------
 	// Assign to ko.extensions object
 	
-		if( ! ko.extensions )ko.extensions = {};
-		if( ! ko.extensions.xjsfl )ko.extensions.xjsfl = {};
-		if( ! ko.extensions.xjsfl.classes )ko.extensions.xjsfl.classes = {};
+		if( ! window.xjsflLib ) xjsflLib = {};
 
-		ko.extensions.xjsfl.classes.Shortcuts = Shortcuts;
-		ko.extensions.xjsfl.classes.Shortcut = Shortcut;
+		xjsflLib.Shortcuts = Shortcuts;
+		xjsflLib.Shortcut = Shortcut;
 	
 })()

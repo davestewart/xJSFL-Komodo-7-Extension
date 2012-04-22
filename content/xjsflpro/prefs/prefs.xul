@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet type="text/css" href="chrome://xjsfl/content/xjsflpro/skin/ui.css"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<description id="execFileDesc">, or previews the current XUL file</description>
+	
+	<vbox id="shortcuts">
+		
+		<vbox>
+			
+			<vbox id="box_execProject">
+				<checkbox id="execProject" label="Run Project (CTRL+SHIFT+Enter)" />
+				<description class="indented">Saves all open files, and then executes the left-most JSFL file</description>
+			</vbox>
+			
+			<vbox id="box_execItems">
+				<checkbox id="execItems" label="Run File on Selected Library Items (CTRL+SHIFT+ALT+Enter)" />
+				<description class="indented">Executes the current JSFL file on each of the selected items in the Flash Library panel</description>
+			</vbox>
+			
+		</vbox>
+		
+	</vbox>
+
+</overlay>
+

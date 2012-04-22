@@ -1,0 +1,2 @@
+overlay		chrome://komodo/content/komodo.xul 					chrome://xjsfl/content/xjsflpro/main/xjsflpro.xul
+overlay		chrome://xjsfl/content/xjsfl/prefs/prefs.xul		chrome://xjsfl/content/xjsflpro/prefs/prefs.xul

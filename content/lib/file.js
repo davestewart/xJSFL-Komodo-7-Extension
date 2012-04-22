@@ -14,9 +14,7 @@
 	// ----------------------------------------------------------------------------------------------------
 	// setup
 	
-		if( ! ko.extensions )ko.extensions = {};
-		if( ! ko.extensions.xjsfl )ko.extensions.xjsfl = {};
-		if( ! ko.extensions.xjsfl.classes )ko.extensions.xjsfl.classes = {};
+		if( ! window.xjsflLib ) xjsflLib = {};
 	
 	// ----------------------------------------------------------------------------------------------------
 	// class
@@ -24,12 +22,12 @@
 		/**
 		 * File object - reads and writes text files to disk
 		 */
-		ko.extensions.xjsfl.classes.File = function(pathOrURI, content)
+		xjsflLib.File = function(pathOrURI, content)
 		{
 			// constructor
 				this.koFileEx		= Components.classes["@activestate.com/koFileEx;1"].createInstance(Components.interfaces.koIFileEx);
 				this.koFileEx.path	= ko.uriparse.URIToPath(pathOrURI);
-		
+				
 			// write to the file if content is supplied
 				if(content)
 				{
@@ -37,7 +35,7 @@
 				}
 		}
 		
-		ko.extensions.xjsfl.classes.File.prototype =
+		xjsflLib.File.prototype =
 		{
 			/** @type {Components.interfaces.koIFileEx} */
 			koFileEx:null,

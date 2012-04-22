@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<overlay id="overlay_xjsfl"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		 >
+
+    <script type="application/x-javascript" src="chrome://xjsfl/content/xjsflpro/main/xjsflpro.js"/>
+    
+	<commandset id="allcommands">
+		<command
+			id="cmd_xjsflDebugger"
+			oncommand="xjsfl.tools.launchDebugger();"
+			/>
+	</commandset>
+	
+	<commandset id="allcommands">
+		<command
+			id="cmd_xjsflCopyURI"
+			oncommand="xjsfl.tools.copyViewURI()"
+			/>
+	</commandset>
+
+	<menupopup id="tabContextMenu">
+		<menuitem
+			id="menu_xjsflCopyURI"
+			insertafter="morekomodo-copyDirectoryPath"
+			image="chrome://xjsfl/content/xjsfl/skin/jsfl-16.png"
+			accesskey="U"
+			class="menuitem-iconic"
+			label="Copy URI String"
+			observes="cmd_xjsflCopyURI"
+			/>
+	</menupopup>
+
+	<menupopup id="popup_tools">
+		
+		<menuitem
+			id="menu_xjsflDebugger"
+			label="xJSFL Debugger"
+			image="chrome://xjsfl/content/xjsflpro/skin/bug.png"
+			accesskey="X"
+			observes="cmd_xjsflDebugger"
+			class="menuitem-iconic"
+			/>
+		
+	</menupopup>
+
+</overlay>
+

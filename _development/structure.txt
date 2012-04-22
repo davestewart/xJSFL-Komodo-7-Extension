@@ -1,0 +1,197 @@
+// ----------------------------------------------------------------------------------------------------
+// original
+
+	xJSFL
+		content
+			lib
+				classes.js
+				file.js
+				prefs.js
+				shortcuts.js
+				views.js
+			prefs
+				panel.css
+				panel.js
+				panel.xul
+				tree.xul
+			xjsfl
+				xjsfl.js
+				xjsfl.xul
+
+
+
+	xJSFL Pro
+		content
+			debugger
+				debugger.js
+				debugger.xul
+			xjsflpro
+				xjsflpro.js
+				xjsflpro.xul
+
+
+
+	AutoCode
+		content
+			lib
+				autocomplete.js
+				comments.js
+				console.js
+				exec.js
+				include.js
+				snippets.js
+			pref
+				autocode-overlay.xul
+				autocode.pref.js
+				autocode.pref.xul
+				styles.css
+			test
+				blah
+			utils
+				nodes.js
+				prefs.js
+
+
+// ----------------------------------------------------------------------------------------------------
+// new
+
+	Common
+		content
+			lib
+				classes
+					classes.js
+					file.js
+					prefs.js
+					shortcuts.js
+					views.js
+				functions
+					nodes.js
+					prefs.js
+			main
+				debugger
+					debugger.js
+					debugger.xul
+				prefs
+					prefs.css
+					xjsfl.js
+					xjsfl.xul
+					tree.xul
+				xjsfl
+					xjsfl.js
+					xjsfl.xul
+				xjsflpro
+					xjsflpro.js
+					xjsflpro.xul
+
+
+
+
+	xJSFL
+		content
+			debugger
+				debugger.js
+				debugger.xul
+			prefs
+				xjsfl.css
+				xjsfl.js
+				xjsfl.xul
+				tree.xul
+			xjsfl
+				xjsfl.js
+				xjsfl.xul
+			xjsflpro
+				xjsflpro.js
+				xjsflpro.xul
+
+
+
+	AutoCode
+		content
+			main
+				autocode
+					autocode.js
+					autocode.xul
+				components
+					autocomplete.js
+					comments.js
+					console.js
+					exec.js
+					include.js
+					snippets.js
+				prefs
+					autocode.xul
+					autocode.js
+					tree.xul
+					prefs.css
+
+
+
+
+// new
+
+	Common
+		content
+			lib
+				classes
+					classes.js
+					file.js
+					prefs.js
+					shortcuts.js
+					views.js
+				functions
+					nodes.js
+					prefs.js
+			xjsfl
+				main
+					xjsfl.js
+					xjsfl.xul
+				prefs
+					prefs.js
+					prefs.xul
+					tree.xul
+				skin
+					css
+						codeintel.css
+						prefs.css
+						ui.css
+					images
+						icon.png
+						js.png
+						jsfl.png
+			xjsflpro
+				main
+					xjsflpro.js
+					xjsflpro.xul
+				debugger
+					debugger.js
+					debugger.xul
+				prefs
+					prefs.js
+					prefs.xul
+				skin
+					css
+						prefs.css
+					images
+						bug.png
+
+
+
+
+	xJSFL
+		content
+			debugger
+				debugger.js
+				debugger.xul
+			prefs
+				xjsfl.css
+				xjsfl.js
+				xjsfl.xul
+				tree.xul
+			xjsfl
+				xjsfl.js
+				xjsfl.xul
+			xjsflpro
+				xjsflpro.js
+				xjsflpro.xul
+
+
