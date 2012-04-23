@@ -70,6 +70,7 @@
 									break;
 									case 'number':
 									case 'long':
+									case 'int':
 										return parseInt(element.value);
 									break;
 									case 'double':
@@ -81,7 +82,7 @@
 										return element.value;
 								}
 							}
-							
+
 						// otherwise, examine the element itself
 							else if(element.nodeName === 'checkbox')
 							{
@@ -127,7 +128,7 @@
 											element.value = value;
 									}
 								}
-								
+
 							// otherwise, examine the element itself
 								else if(element.nodeName === 'checkbox')
 								{
@@ -161,7 +162,7 @@
 				{
 					// elements
 						var element = this.document.getElementById(id);
-						
+
 					// do something with element
 						if(element)
 						{
@@ -169,7 +170,7 @@
 								var prefid		= element.getAttribute('prefid');
 								var preftype	= element.getAttribute('preftype').toLowerCase();
 								var value;
-								
+
 							// get value based on preftype (if it exists)
 								if(prefid && preftype)
 								{
@@ -186,6 +187,7 @@
 										break;
 										case 'number':
 										case 'long':
+										case 'int':
 											value = this.prefs.getLong(prefid);
 										break;
 										case 'double':
@@ -198,7 +200,7 @@
 										default:
 											value = this.prefs.get(prefid);
 									}
-									
+
 									if(typeof value !== 'undefined')
 									{
 										element.value = value;
@@ -224,7 +226,7 @@
 						// variables
 							var prefid		= element.getAttribute('prefid');
 							var preftype	= element.getAttribute('preftype').toLowerCase();
-							
+
 						// determine type based on preftype (if it exists)
 							if(prefid && preftype)
 							{
@@ -236,6 +238,7 @@
 									break;
 									case 'number':
 									case 'long':
+									case 'int':
 										this.prefs.setLong(prefid, parseInt(element.value));
 									break;
 									case 'double':
@@ -266,15 +269,27 @@
 
 				/**
 				 * Load multiple values from the saved preferences into UI controls. Controls should contain a prefid and a preftype attribute
-				 * @param	{Array}		settings	An Array of document ids
+				 * @param	{Array}		ids			An Array of document ids, or nothing to grab all elements with a prefid from the document
 				 */
 				loadGroup:function(ids)
 				{
-					this.ids = ids;
-					for each(var id in ids)
-					{
-						this.load(id);
-					}
+					// grab all elements if an array of ids isn't supplied
+						if(typeof ids === 'undefined')
+						{
+							var elements = this.document.getElementsByAttribute('prefid', '*');
+							ids = [];
+							for (var i = 0; i < elements.length; i++)
+							{
+								ids.push(elements[i].id);
+							}
+						}
+
+					// assign ids
+						this.ids = ids;
+						for each(var id in ids)
+						{
+							this.load(id);
+						}
 				},
 
 				saveGroup:function()
@@ -287,7 +302,7 @@
 
 			// ----------------------------------------------------------------------------------------------------
 			// utils
-			
+
 				throwError:function(message)
 				{
 					alert(message);
