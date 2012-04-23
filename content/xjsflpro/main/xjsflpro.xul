@@ -9,14 +9,14 @@
 		 >
 
     <script type="application/x-javascript" src="chrome://xjsfl/content/xjsflpro/main/xjsflpro.js"/>
-    
+
 	<commandset id="allcommands">
 		<command
 			id="cmd_xjsflDebugger"
 			oncommand="xjsfl.tools.launchDebugger();"
 			/>
 	</commandset>
-	
+
 	<commandset id="allcommands">
 		<command
 			id="cmd_xjsflCopyURI"
@@ -37,7 +37,7 @@
 	</menupopup>
 
 	<menupopup id="popup_tools">
-		
+
 		<menuitem
 			id="menu_xjsflDebugger"
 			label="xJSFL Debugger"
@@ -46,8 +46,7 @@
 			observes="cmd_xjsflDebugger"
 			class="menuitem-iconic"
 			/>
-		
+
 	</menupopup>
 
 </overlay>
-

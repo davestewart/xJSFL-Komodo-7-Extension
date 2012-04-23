@@ -38,16 +38,16 @@
 	<script type="application/x-javascript;version=1.7" src="chrome://komodo/content/pref/koPrefUtils.js" />
 
 	<script type="application/x-javascript;version=1.7" src="chrome://xjsfl/content/xjsfl/prefs/prefs.js"/>
-	
+
 	<!-- This main vbox is to ensure *all* the pref widgets are accessible, as it adds a scrollbar when the contents are too long. -->
-	
+
 	<vbox flex="1" class="autoscroll">
 
 		<groupbox orient="vertical" id="installation">
 			<caption label="xJSFL" />
 			<description>Specify the path to your xJSFL installation folder.</description>
 			<hbox align="center">
-				<textbox id="xjsflPath" flex="1"/>
+				<textbox id="xjsflPath" prefid="xjsfl.paths.xjsfl" preftype="string" flex="1"/>
 				<button label="Browse..." oncommand="setXJSFLPath();" />
 			</hbox>
 		</groupbox>
@@ -56,6 +56,8 @@
 			<caption label="JSFL Directories"/>
 			<description>Specify any directories that you want Komodo to use for autocomplete and calltips. Komodo will recursively scan these directories for information.</description>
 			<pathlist id="jsflExtraPaths"
+					  prefid="xjsfl.paths.extra"
+					  preftype="string"
 					  flex="1"
 					  seltype="multiple"
 					  rows="4"
@@ -63,15 +65,15 @@
 		</groupbox>
 
 		<groupbox orient="vertical" id="shortcuts">
-			
+
 			<caption label="Publishing shortcuts"/>
 			<description>You can associate Flash-style publishing keyboard shortcuts in Komodo to make your JSFL development easier (requires restart).</description>
 
 			<vbox id="box_execFile" class="xjsfl">
-				<checkbox id="execFile" label="Execute File (CTRL+Enter)" />
+				<checkbox id="execFile" prefid="xjsfl.exec.file" preftype="boolean" label="Execute file (CTRL+Enter)" />
 				<description id="execFileDesc" class="indented">Executes the current JSFL file</description>
 			</vbox>
-			
+
 		</groupbox>
 
 	</vbox>
