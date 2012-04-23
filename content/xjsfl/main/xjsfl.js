@@ -11,50 +11,59 @@
 // ------------------------------------------------------------------------------------------------------------------------
 // xJSFL - library of functions needed to publish JSFL files
 
-	// ----------------------------------------------------------------------------------------------------
-	// setup
-
-		// dispose of previously-created shortcuts if they exist
-			if(window.xjsfl && xjsfl.shortcuts)
-			{
-				xjsfl.shortcuts.destroy();
-			}
+if( ! window.xjsfl )
+{
+	window.xjsfl =
+	{
+		shortcuts:
+		{
 			
-		// assign the alias to ko.extensions
-			/*
-			if( ! ko.extensions)
-			{
-				ko.extensions = {};
-			}
-			
-		// create the xjsfl object
-			*/
-			window.xjsfl = { };
-	
-	// ----------------------------------------------------------------------------------------------------
-	// shortcuts
-	
-		/**
-		 * @type {xjsflLib.Shortcuts} Shortcuts instance
-		 */
-		xjsfl.shortcuts = null;
+		},
 		
-	// ----------------------------------------------------------------------------------------------------
-	// settings
-	
-		xjsfl.settings =
+		settings:
 		{
 			shortcuts:
 			[
 				['xjsfl.exec.file', true, false, false],
-			]
-		};			
-
-	// ----------------------------------------------------------------------------------------------------
-	// setup
-	
-		xjsfl.initialize = function(event)
+			],
+			enabled:
+			{
+				file			:false,
+				project			:false,
+				library			:false,
+			},
+		},
+		
+		onLoad:function()
 		{
+			// handler proxies
+				function onKeyPress(event) { xjsfl.events.onKeyPress.call(xjsfl, event); }
+
+			// event handlers
+				var container = (ko.views.manager ? ko.views.manager.topView : window)
+				container.addEventListener('keypress', onKeyPress, true);
+					
+			// initialize
+				xjsfl.initialize();
+		},
+
+		toString:function()
+		{
+			return '[object xJSFL]';
+		}
+
+	}
+	
+	window.addEventListener('load',  xjsfl.onLoad, false);
+
+}
+
+	// --------------------------------------------------------------------------------
+	// setup
+
+		xjsfl.initialize = function()
+		{
+			/*
 			// debug
 				clear();
 				
@@ -79,8 +88,10 @@
 						this.shortcuts.add(id, xjsfl.exec[command], 13, ctrlKey, shiftKey, altKey);
 					}
 				}
-		}
+				*/
+		},
 		
+
 	// --------------------------------------------------------------------------------
 	// commands
 
@@ -222,5 +233,5 @@
 	// initialize
 	
 		//clear();
-		//window.addEventListener('load', xjsfl.initialize, false);
+		window.addEventListener('load', xjsfl.initialize, false);
 		xjsfl.initialize();
