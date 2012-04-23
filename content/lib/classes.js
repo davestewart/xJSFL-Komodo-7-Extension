@@ -19,6 +19,6 @@
 	// ----------------------------------------------------------------------------------------------------
 	// classes
 	
-		xjsflLib.JSON			= Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON);
-		xjsflLib.Clipboard		= Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+		xjsflLib.JSON		= Components.classes["@mozilla.org/dom/json;1"].createInstance(Components.interfaces.nsIJSON);
+		xjsflLib.Clipboard	= Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
 

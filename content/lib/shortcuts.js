@@ -189,3 +189,14 @@
 		xjsflLib.Shortcut = Shortcut;
 	
 })()
+
+/*
+function callback(event)
+{
+	alert(event)
+}
+
+var shortcuts = new xjsflLib.Shortcuts();
+
+shortcuts.add('test', callback, keyCode, ctrlKey, shiftKey, altKey, scope)
+*/
