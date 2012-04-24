@@ -10,39 +10,50 @@
 //
 // ------------------------------------------------------------------------------------------------------------------------
 // xJSFL - library of functions needed to publish JSFL files
-alert(1)
+
 if( ! window.xjsfl )
 {
 	window.xjsfl =
 	{
-		shortcuts:
-		{
-
-		},
+		shortcuts:null,
 
 		settings:
 		{
 			shortcuts:
 			[
-				['xjsfl.exec.file', true, false, false],
+				{
+					id			:'xjsfl.exec.file',
+					callback	:xjsfl.exec.file,
+					combo		:'ctrl+enter',
+				},
 			],
-			enabled:
+		},
+
+		onPrefs:function()
+		{
+			var prefs = new xjsflLib.Prefs(ko.prefs);
+			for each(var shortcut in this.settings.shortcuts)
 			{
-				file			:false,
-			},
+				var enabled = prefs.get(shortcut.id);
+				if(enabled)
+				{
+					xjsfl.shortcuts.add(shortcut.id, shortcut.callback, shortcut.combo);
+				}
+				else
+				{
+					xjsfl.shortcuts.remove(shortcut.id);
+				}
+			}
 		},
 
 		onLoad:function()
 		{
-			// handler proxies
-				function onKeyPress(event) { xjsfl.events.onKeyPress.call(xjsfl, event); }
-
 			// event handlers
-				var container = (ko.views.manager ? ko.views.manager.topView : window)
-				container.addEventListener('keypress', onKeyPress, true);
+				var container		= (ko.views.manager ? ko.views.manager.topView : window);
+				xjsfl.shortcuts		= new xjsflLib.Shortcuts(container);
 
 			// initialize
-				xjsfl.initialize();
+				xjsfl.onPrefs();
 		},
 
 		toString:function()
@@ -51,76 +62,8 @@ if( ! window.xjsfl )
 		}
 
 	}
-
 	window.addEventListener('load',  xjsfl.onLoad, false);
-
 }
-
-/**
- * Set up and handle events
- *
- * - Exec		: CTRL+Enter
- * - Snippets	: Tab in main window
- * - Comments	: Tab or Return in main window
- * - Places		: ALT+Click on Places pane
- */
-xjsfl.events =
-{
-	onKeyPress:function(event)
-	{
-		/*
-		var object, fn, result, names = ['console', 'snippets', 'comments'];
-		for each(var name in names)
-		{
-			if(xjsfl.settings.enabled[name])
-			{
-				object	= xjsfl[name];
-				result	= object.onEvent.call(object, event);
-				if(result)
-				{
-					event.preventDefault();
-					event.stopPropagation();
-					return false;
-				}
-			}
-		}
-		*/
-		return true;
-	},
-}
-
-// --------------------------------------------------------------------------------
-// setup
-
-	xjsfl.initialize = function()
-	{
-		/*
-		// debug
-			clear();
-
-		// shortcuts
-			xjsfl.shortcuts = new xjsflLib.Shortcuts();
-
-		// settings
-			var prefs = new xjsflLib.Prefs(ko.prefs);
-
-		// set up commands
-			for each(var setting in xjsfl.settings.shortcuts)
-			{
-				var id		= setting[0];
-				var value	= prefs.get(id);
-				trace('> ' + id)
-				if(value)
-				{
-					var ctrlKey		= setting[1];
-					var shiftKey	= setting[2];
-					var altKey		= setting[3];
-					var command		= id.split('.').pop();
-					this.shortcuts.add(id, xjsfl.exec[command], 13, ctrlKey, shiftKey, altKey);
-				}
-			}
-			*/
-	},
 
 
 // --------------------------------------------------------------------------------
