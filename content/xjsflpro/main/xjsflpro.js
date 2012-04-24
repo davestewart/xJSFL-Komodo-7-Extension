@@ -13,22 +13,27 @@
 
 if( ! window.xjsfl.settings.pro )
 {
-	window.xjsfl.settings.pro = true;
+	// set "pro" setting
+		window.xjsfl.settings.pro = true;
 
-	xjsfl.tools.extend
-	(
-		xjsfl.settings.enabled,
-		{
-			project:false,
-			library:false
-		}
-	);
+	// add pro keyboard bindings
+		xjsfl.settings.shortcuts.push
+		(
+			[
+				{
+					combo		:'ctrl+shift+enter',
+					id			:'xjsfl.exec.project',
+					callback	:xjsfl.exec.project,
+				},
+				{
+					combo		:'ctrl+shift+alt+enter',
+					id			:'xjsfl.exec.items',
+					callback	:xjsfl.exec.items
+				},
+			]
+		);
 
 }
-
-// ----------------------------------------------------------------------------------------------------
-// settings
-
 
 // --------------------------------------------------------------------------------
 // commands
@@ -182,6 +187,7 @@ if( ! window.xjsfl.settings.pro )
 			var errorFile	= new xjsflLib.File(errorPath);
 
 		// set a small timeout to let Flash do its thing before checking for errors
+		// could put this on a small setInterval delay instead
 			window.setTimeout(loadErrors, 1000);
 	};
 
