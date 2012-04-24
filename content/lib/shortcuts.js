@@ -56,17 +56,18 @@
 	// ----------------------------------------------------------------------------------------------------
 	// Shortcuts manager class
 
-		function Shortcuts(window)
+		function Shortcuts(_window)
 		{
-			this.window = window;
+			this.getWindow = function()
+			{
+				return _window || window;
+			}
 		}
 
 		Shortcuts.prototype =
 		{
 			// ----------------------------------------------------------------------------------------------------
 			// variables
-
-				window:null,
 
 				handlers:null,
 
@@ -81,41 +82,18 @@
 						if(typeof callback !== 'function')		throw new TypeError(errorMessage + 'callback must be of type function');
 						if(typeof keyCode !== 'number')			throw new TypeError(errorMessage + 'keyCode must be of type number');
 
-					// if not yet initialized, instantiate handlers object and add event listener
-						if( ! this.handlers )
-						{
-							// variables
-								this.handlers = {};
-								//trace('adding listener to:' + this);
-
-							// set up event listener and forward scope to this
-								var manager = this;
-								function handler(event)
-								{
-									manager.onKeyPress(event);
-								}
-
-							// add destroy() method in same scope so that listener can be removed
-								this.destroy = function()
-								{
-									//trace('removing listener from:' + this);
-									this.window.removeEventListener('keypress', handler, true);
-									this.removeAll();
-								}
-
-							// add the event handler
-								this.window.addEventListener('keypress', handler, true);
-						}
+					// setup shortcut
+						var shortcut = new Shortcut(callback, keyCode, !!ctrlKey, !!shiftKey, !!altKey, scope || this.window);
 
 					// add handler to handlers object
+						this.checkHandlers();
 						//trace('adding "' +id+ '" handler to:' + this);
 						if( ! this.handlers[keyCode] )
 						{
 							this.handlers[keyCode] = {};
 						}
 
-					// setup shortcut and add handler function
-						var shortcut = new Shortcut(callback, keyCode, ctrlKey, shiftKey, altKey, scope);
+					// add handler function
 						this.handlers[keyCode][id] = shortcut;
 
 					// return the instance for chaining
@@ -128,6 +106,12 @@
 						keySequence		= keySequence.toLowerCase().replace(/[- ]/, '_');
 						var keyName		= keySequence.split('+').pop();
 						var keyCode		= keyNames[keyName];
+						if(keyCode === undefined)
+						{
+							var message = 'The key "' +keyName+ '" was not recognised';
+							alert(message);
+							throw new Error(message);
+						}
 
 						var modifiers	= keySequence.match(/(ctrl|alt|shift)/g);
 						var ctrlKey		= /\bctrl\b/.test(keySequence);
@@ -181,6 +165,38 @@
 			// internal
 
 				/**
+				 * if not yet initialized, instantiate handlers object and add event listener
+				 */
+				checkHandlers:function()
+				{
+					if( ! this.handlers )
+					{
+						// variables
+							var window = this.getWindow();
+							this.handlers = {};
+							//trace('adding listener to:' + this);
+
+						// set up event listener and forward scope to this
+							var manager = this;
+							function handler(event)
+							{
+								manager.onKeyPress(event);
+							}
+
+						// add destroy() method in same scope so that listener can be removed
+							this.destroy = function()
+							{
+								//trace('removing listener from:' + this);
+								window.removeEventListener('keypress', handler, true);
+								this.removeAll();
+							}
+
+						// add the event handler
+							window.addEventListener('keypress', handler, true);
+					}
+				},
+
+				/**
 				 * Handles key press events
 				 * @param	{Event}	event		A DOM Event
 				 * @returns	{Boolean}			True of false if a shortcut was called
@@ -190,14 +206,14 @@
 					/** @type {Shortcut} A Shortcut handler */
 					var handler;
 					var handlers = this.handlers[event.keyCode];
-					for(name in handlers)
+					for(id in handlers)
 					{
-						var handler = handlers[name];
+						var handler = handlers[id];
 						if(handler.assert(event))
 						{
-							//trace('Running handler: ' + name);
-							var state = handler.execute();
-							if(state === false)
+							//trace('Running handler: ' + id);
+							var state = handler.execute(event);
+							if(state)
 							{
 								event.preventDefault();
 								event.stopPropagation();
