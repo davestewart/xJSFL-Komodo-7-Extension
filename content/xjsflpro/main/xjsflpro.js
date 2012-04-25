@@ -11,30 +11,6 @@
 // ------------------------------------------------------------------------------------------------------------------------
 // xJSFL Pro extension for Komodo
 
-if( ! window.xjsfl.settings.pro )
-{
-	// set "pro" setting
-		window.xjsfl.settings.pro = true;
-
-	// add pro keyboard bindings
-		xjsfl.settings.shortcuts.push
-		(
-			[
-				{
-					combo		:'ctrl+shift+enter',
-					id			:'xjsfl.exec.project',
-					callback	:xjsfl.exec.project,
-				},
-				{
-					combo		:'ctrl+shift+alt+enter',
-					id			:'xjsfl.exec.items',
-					callback	:xjsfl.exec.items
-				},
-			]
-		);
-
-}
-
 // --------------------------------------------------------------------------------
 // commands
 
@@ -62,7 +38,7 @@ if( ! window.xjsfl.settings.pro )
 							{
 								if(/<dialog\b/.test(view.scimoz.text))
 								{
-									ko.statusBar.AddMessage('Previewing XUL dialog...', 'xJSFL', 1000);
+									ko.statusBar.AddMessage('Previewing XUL dialog...', 'xJSFL', 3000);
 									xjsfl.file.run(uri, 'xul');
 									return true;
 								}
@@ -71,8 +47,9 @@ if( ! window.xjsfl.settings.pro )
 						// otherwise, run JSFL file
 							else
 							{
-								ko.statusBar.AddMessage('Running JSFL script...', 'xJSFL', 1000);
+								ko.statusBar.AddMessage('Running JSFL script...', 'xJSFL', 3000);
 								xjsfl.file.run(uri, 'file');
+								xjsfl.file.debug();
 								return true;
 							}
 					}
@@ -107,7 +84,7 @@ if( ! window.xjsfl.settings.pro )
 			// run the first view
 				if(uri)
 				{
-					ko.statusBar.AddMessage('Running xJSFL project...', 'xJSFL', 1000);
+					ko.statusBar.AddMessage('Running xJSFL project...', 'xJSFL', 3000);
 					xjsfl.file.run(uri, 'file');
 					return true;
 				}
@@ -130,7 +107,7 @@ if( ! window.xjsfl.settings.pro )
 			// variables
 				if(saved && /.jsfl$/.test(uri))
 				{
-					ko.statusBar.AddMessage('Running JSFL script on selected library items...', 'xJSFL', 1000);
+					ko.statusBar.AddMessage('Running JSFL script on selected library items...', 'xJSFL', 3000);
 					xjsfl.execute.file(uri, 'items');
 					return true;
 				}
@@ -139,7 +116,38 @@ if( ! window.xjsfl.settings.pro )
 				return false;
 		}
 
-	},
+	};
+
+// ----------------------------------------------------------------------------------------------------
+// settings
+
+	if( ! window.xjsfl.settings.pro )
+	{
+		// "pro" settings
+			window.xjsfl.settings.pro = true;
+	
+			xjsfl.toString = function()
+			{
+				return '[object xJSFLPro]';
+			}
+
+		// add pro keyboard bindings
+			xjsfl.settings.shortcuts.push
+			(
+				[
+					{
+						combo		:'ctrl+shift+enter',
+						id			:'xjsfl.exec.project',
+						callback	:xjsfl.exec.project,
+					},
+					{
+						combo		:'ctrl+shift+alt+enter',
+						id			:'xjsfl.exec.items',
+						callback	:xjsfl.exec.items
+					},
+				]
+			);
+	}
 
 // ----------------------------------------------------------------------------------------------------
 // Events
@@ -172,12 +180,12 @@ if( ! window.xjsfl.settings.pro )
 							win.addEventListener('load', build);
 
 						// feedback and cleanup
-							ko.statusBar.AddMessage(data.message, 'xJSFL', 500, true);
+							ko.statusBar.AddMessage(data.message, 'xJSFL', 3000, true);
 							errorFile.remove();
 					}
 					else
 					{
-						ko.statusBar.AddMessage('No errors!', 'xJSFL', 500);
+						ko.statusBar.AddMessage('No errors!', 'xJSFL', 3000);
 					}
 			}
 
@@ -188,7 +196,7 @@ if( ! window.xjsfl.settings.pro )
 
 		// set a small timeout to let Flash do its thing before checking for errors
 		// could put this on a small setInterval delay instead
-			window.setTimeout(loadErrors, 1000);
+			window.setTimeout(loadErrors, 3000);
 	};
 
 

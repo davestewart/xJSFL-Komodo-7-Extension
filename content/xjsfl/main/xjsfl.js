@@ -16,20 +16,23 @@ if( ! window.xjsfl )
 	window.xjsfl =
 	{
 		shortcuts:null,
-
+		
 		settings:
 		{
-			shortcuts:
-			[
-				{
-					id			:'xjsfl.exec.file',
-					callback	:xjsfl.exec.file,
-					combo		:'ctrl+enter',
-				},
-			],
+			
+		},
+		
+		onLoad:function()
+		{
+			// event handlers
+				var container		= (ko.views.manager ? ko.views.manager.topView : window);
+				xjsfl.shortcuts		= new xjsflLib.Shortcuts(container);
+
+			// initialize
+				xjsfl.initialize();
 		},
 
-		onPrefs:function()
+		initialize:function()
 		{
 			var prefs = new xjsflLib.Prefs(ko.prefs);
 			for each(var shortcut in this.settings.shortcuts)
@@ -44,16 +47,6 @@ if( ! window.xjsfl )
 					xjsfl.shortcuts.remove(shortcut.id);
 				}
 			}
-		},
-
-		onLoad:function()
-		{
-			// event handlers
-				var container		= (ko.views.manager ? ko.views.manager.topView : window);
-				xjsfl.shortcuts		= new xjsflLib.Shortcuts(container);
-
-			// initialize
-				xjsfl.onPrefs();
 		},
 
 		toString:function()
@@ -88,7 +81,7 @@ if( ! window.xjsfl )
 					if(saved)
 					{
 						trace('saved...')
-						ko.statusBar.AddMessage('Running JSFL script...', 'xJSFL', 1000);
+						ko.statusBar.AddMessage('Running JSFL script...', 'xJSFL', 3000);
 						xjsfl.file.run(uri, 'file');
 						return true;
 					}
@@ -98,6 +91,21 @@ if( ! window.xjsfl )
 				//return false;
 		}
 	},
+	
+// --------------------------------------------------------------------------------
+// settings
+
+	xjsfl.settings =
+	{
+		shortcuts:
+		[
+			{
+				id			:'xjsfl.exec.file',
+				callback	:xjsfl.exec.file,
+				combo		:'ctrl+enter',
+			},
+		],
+	}
 
 // ----------------------------------------------------------------------------------------------------
 // Events
@@ -136,9 +144,6 @@ if( ! window.xjsfl )
 							// run the run file
 								new xjsflLib.File(jsflPath).run();
 
-							// start the debug process in motion
-								this.debug();
-
 							// return
 								return true;
 						}
@@ -158,11 +163,6 @@ if( ! window.xjsfl )
 				}
 
 		},
-
-		debug:function()
-		{
-			return true;
-		}
 
 	}
 
